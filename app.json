@@ -1,0 +1,34 @@
+{
+  "id": "5a36ac6d-38de-4908-a047-7f924c74ec11",
+  "name": "Restore Environment",
+  "publisher": "EOS Solutions",
+  "version": "26.0.0.0",
+  "brief": "Restore Environment",
+  "description": "Restore Environment",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "features": [
+    "TranslationFile"
+  ],
+  "dependencies": [
+  ],
+  "screenshots": [],
+  "platform": "26.0.0.0",
+  "application": "26.0.0.0",
+  "idRanges": [
+    {
+      "from": 70000,
+      "to": 79000
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  },
+  "runtime": "15.0",
+  "target": "Cloud"
+}

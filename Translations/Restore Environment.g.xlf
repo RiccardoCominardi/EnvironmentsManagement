@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-US" original="Restore Environment">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 471369648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Restore Environment (ENV)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 471369648 - Field 3210361224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 471369648 - Field 2536478188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Connection Is Up</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS Connection Is Up - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 471369648 - Field 1094314435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Max No. Of Attemps</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS Max No. Of Attemps - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 471369648 - Field 4238666553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Environment Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS New Environment Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 471369648 - Field 2950639144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production Environment Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS Prod. Environment Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 471369648 - Field 1686736337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS Secret Due Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 471369648 - Field 322628400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Token Authorization Time</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS Token Authorization Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 471369648 - Field 1193759973 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Waiting Time After Attempt (ms)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS Wait. Time Attempt (ms) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 471369648 - Field 926283306 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Waiting Fixed Time (ms)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS Waiting Fixed Time (ms) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 471369648 - Field 972296345 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Waiting Time Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS Waiting Time Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 887993225 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field Mapping (ENV)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Field Mapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 887993225 - Method 407472073 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field No. %1 is already used</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Field Mapping - Method CheckDuplicatedField - NamedType Text000Err</note>
+        </trans-unit>
+        <trans-unit id="Table 887993225 - Field 3210361224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Field Mapping - Field EOS Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 887993225 - Field 2080924904 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Field Mapping - Field EOS Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 887993225 - Field 1320056944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Field Mapping - Field EOS Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 887993225 - Field 1320056944 - Method 2126772001 - NamedType 4131985523" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There is no field with ID %1 in table %2.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Field Mapping - Field EOS Field No. - Method OnValidate - NamedType ObjNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Table 887993225 - Field 2785083732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Field Mapping - Field EOS Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 887993225 - Field 97974655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Replace Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Field Mapping - Field EOS Replace Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 887993225 - Field 1756253562 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Replace Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Field Mapping - Field EOS Replace Value - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 887993225 - Field 1195889500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Field Mapping - Field EOS Table No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3289261557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Mapping (ENV)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3289261557 - Field 3210361224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3289261557 - Field 949770657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3289261557 - Field 2394593088 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Enabled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Enabled - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3289261557 - Field 384231925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Source No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3289261557 - Field 309010296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Source Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3289261557 - Field 2636386265 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Filter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Table Filter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3289261557 - Field 760161316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Table Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3289261557 - Field 1195889500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Table No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3289261557 - Field 1195889500 - Method 2126772001 - NamedType 4131985523" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There is no Table with ID %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Table No. - Method OnValidate - NamedType ObjNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Table 3289261557 - Field 3456033531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 951961053 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cannot execute this funcionality in a non-production environment.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method CheckEnvironment - NamedType Text000Err</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 1220538819 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field %1 must be filled in.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method CheckSetupForToken - NamedType Text000Err</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 838713857 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deleted %1 Job Queue Entries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method DeleteRestoreJobQueue - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 838713857 - NamedType 1196336482" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Job Queue Entries to delete</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method DeleteRestoreJobQueue - NamedType Text001Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 2651863686 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Choose a function to execute</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method ExecuteFunctionsUI - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 2651863686 - NamedType 1196336482" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete Environment,Get Environment Status,Copy Environment,Cancel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method ExecuteFunctionsUI - NamedType Text001Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 2651863686 - NamedType 1753513791" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Completed. Check the status of the environment in the admincenter or use the function Get Environment Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method ExecuteFunctionsUI - NamedType Text002Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 2651863686 - NamedType 3779895200" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Completed. Environment %1 is currently in status %2.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method ExecuteFunctionsUI - NamedType Text003Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 2356848215 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job Queue is already present in company %1. Open the setup in that specific company or delete and recreate the job queue entry.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method FindJobQueueInCompanies - NamedType Text000Err</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 2653096382 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Restore Environment (ENV)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method JobQueueEntry - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 3120216751 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Environment cannot be restored beacuse is already present in Active status. Please delete first and try again later.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method RestoreEnvironment - NamedType Text000Err</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 3120216751 - NamedType 2316870939" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maximum number of attempts reached. Please try again later.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method RestoreEnvironment - NamedType Text001Err</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 3120216751 - NamedType 1753513791" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Completed. Check the status of the environment in the admincenter or use the function Get Environment Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method RestoreEnvironment - NamedType Text002Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 2804022923 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invalid Access Token Property %1, Value:  %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method UpdateTokenValue - NamedType Text000Err</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1773623840 - Method 596577147 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Completed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ExecuteReplaceMappingFromAPI - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1773623840 - Method 1738516861 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Completed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ExecuteReplaceMappingUI - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1773623840 - Method 1147532894 - NamedType 1745287229" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This action will delete and recreate all lines based on Excel files. Continue?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ImportExcel - NamedType Text000Qst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1773623840 - Method 1147532894 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invalid File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ImportExcel - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1773623840 - Method 1147532894 - NamedType 1196336482" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Completed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ImportExcel - NamedType Text001Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1773623840 - Method 13764402 - NamedType 1745287229" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This action will delete and recreate code %1 based on Excel files. Continue?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ImportExcelForSpecifCode - NamedType Text000Qst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1773623840 - Method 13764402 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invalid File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ImportExcelForSpecifCode - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1773623840 - Method 13764402 - NamedType 1196336482" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Completed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ImportExcelForSpecifCode - NamedType Text001Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1773623840 - Method 535775630 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Records: #1########</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ProcessExcelFile - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1773623840 - Method 1258532027 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General information for mapping \\1. Codes with "Source Type" field equal to Company will be executed before Database\\2. Codes with "Type" field equal to Delete will be executed before Modify\\3. Action "Execute Replace Mapping" from the list will execute each codes. From the card only the specific one.\\4. Export Excel will export all the mapping details, include the non necessary fields (Table Name - Field Name) only for better comprehension\\5. Import Excel will import the mapping details deleting and recreating everythings. The structure must be the same generated from the export action. The unecessary fields (Table Name - Field Name) will not be considered in import functionality. You can leave it blanks but must be in the file.\\6. Executing the "Import From Excel" action from the card will delete only the specific code. From the list will clean every codes.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ShowInfoMapping - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Restore Environment (ENV)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Method 2451453410 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This configuration is allowed only in a production environment.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Method CheckConfiguration - NamedType Text000Err</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Method 1661334556 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Token</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Method SetTokenFields - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Method 1661334556 - NamedType 1196336482" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Token Expired</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Method SetTokenFields - NamedType Text001Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Method 1661334556 - NamedType 1753513791" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Token Available</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Method SetTokenFields - NamedType Text002Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 1735060826 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Connection</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Control Connection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 322628400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Authorization Time</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Control EOS Token Authorization Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 3485336150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Token Present</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Control EOSToken - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 2477294019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Control Delete - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 2944148827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete Job Queue Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action DeleteJobQueueEntryFlow - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 1226686359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Execute Function</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action ExecuteFunction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 2792281505 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Execute Restore</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action ExecuteRestore - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 3001626052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job Queue Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action JobQueueEntryFlow - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 2351941779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open Fields Mapping</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action OpenFieldsMapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 1090334467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Try Connection</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action TryConnection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Mapping (ENV)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - NamedType 705097697" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Filters Applied</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Card - NamedType TableFiltersLbl</note>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Card - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Action 4082531897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Execute Replace Mapping</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Card - Action ExecuteReplaceMapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Action 3477538018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Excel Structure</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Card - Action ExportExcelStructure - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Action 2851454604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export To Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Card - Action ExportToExcel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Action 3545432896 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import From Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Card - Action ImportFromExcel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Action 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export To Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Card - Action ExportExcel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Mapping List (ENV)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Action 4082531897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Execute Replace Mapping</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping List - Action ExecuteReplaceMapping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Action 3477538018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export Excel Structure</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping List - Action ExportExcelStructure - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Action 2851454604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export To Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping List - Action ExportToExcel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Action 3545432896 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import From Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping List - Action ImportFromExcel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Action 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export To Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping List - Action ExportExcel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3603533785 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fields</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Sub - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3428344531 - NamedType 1665189631" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The mapping cannot be found.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Table Mapping API List - NamedType CannotFindMappingErr</note>
+        </trans-unit>
+        <trans-unit id="Enum 3727708842 - EnumValue 368050251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assignee</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum EOS Replace Types - EnumValue Assignee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3727708842 - EnumValue 2988554907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Assignee (With Validation)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum EOS Replace Types - EnumValue Assignee (With Validation) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1422819097 - EnumValue 3133801257 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum EOS Source Types - EnumValue Company - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1422819097 - EnumValue 1077084127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Database</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum EOS Source Types - EnumValue Database - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4104196774 - EnumValue 2477294019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum EOS Types - EnumValue Delete - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4104196774 - EnumValue 3817527484 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modify</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum EOS Types - EnumValue Modify - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3439065488 - EnumValue 3500269956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>After Deletion</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum EOS Waiting Time Types - EnumValue After Deletion - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3439065488 - EnumValue 1064651029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fixed Time</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum EOS Waiting Time Types - EnumValue Fixed Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 572033766 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Restore Environment (ENV)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet EOS Restore Env. - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
