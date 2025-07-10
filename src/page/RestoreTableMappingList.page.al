@@ -63,7 +63,7 @@ page 70001 "EOS Restore Table Mapping List"
                 Image = "Invoicing-MDL-Send";
                 trigger OnAction()
                 begin
-                    RestFieldsMapping.ExecuteReplaceMappingFromAPI();
+                    RestoreAPIMgt.ExecuteReplaceMappingFromAPI(false, Rec."EOS Code");
                 end;
             }
             action(ExportToExcel)
@@ -129,4 +129,5 @@ page 70001 "EOS Restore Table Mapping List"
 
     var
         RestFieldsMapping: Codeunit "EOS Restore Fields Mapping";
+        RestoreAPIMgt: Codeunit "EOS Restore API Mgt.";
 }

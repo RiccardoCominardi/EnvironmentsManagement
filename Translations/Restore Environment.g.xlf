@@ -163,6 +163,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2838312707 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Completed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore API Mgt. - NamedType Text000Lbl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 583858742 - Method 951961053 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cannot execute this funcionality in a non-production environment.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -233,16 +238,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method UpdateTokenValue - NamedType Text000Err</note>
         </trans-unit>
-        <trans-unit id="Codeunit 1773623840 - Method 596577147 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Operation Completed</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ExecuteReplaceMappingFromAPI - NamedType Text000Lbl</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1773623840 - Method 1738516861 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Operation Completed</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ExecuteReplaceMappingUI - NamedType Text000Lbl</note>
-        </trans-unit>
         <trans-unit id="Codeunit 1773623840 - Method 1147532894 - NamedType 1745287229" size-unit="char" translate="yes" xml:space="preserve">
           <source>This action will delete and recreate all lines based on Excel files. Continue?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -279,7 +274,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ProcessExcelFile - NamedType Text000Lbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 1773623840 - Method 1258532027 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
-          <source>General information for mapping \\1. Codes with "Source Type" field equal to Company will be executed before Database\\2. Codes with "Type" field equal to Delete will be executed before Modify\\3. Action "Execute Replace Mapping" from the list will execute each codes. From the card only the specific one.\\4. Export Excel will export all the mapping details, include the non necessary fields (Table Name - Field Name) only for better comprehension\\5. Import Excel will import the mapping details deleting and recreating everythings. The structure must be the same generated from the export action. The unecessary fields (Table Name - Field Name) will not be considered in import functionality. You can leave it blanks but must be in the file.\\6. Executing the "Import From Excel" action from the card will delete only the specific code. From the list will clean every codes.</source>
+          <source>General information for mapping \\1. Codes with "Source Type" field equal to Company will be executed before Database\\2. Codes with "Type" field equal to Delete will be executed before Modify\\3. Export Excel will export all the mapping details, include the non necessary fields (Table Name - Field Name) only for better comprehension\\4. Import Excel will import the mapping details deleting and recreating everythings. The structure must be the same generated from the export action. The unecessary fields (Table Name - Field Name) will not be considered in import functionality. You can leave it blanks but must be in the file.\\5. Executing the "Import From Excel" action from the card will delete only the specific code. From the list will clean every codes.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ShowInfoMapping - NamedType Text000Lbl</note>
         </trans-unit>
@@ -437,11 +432,6 @@
           <source>Fields</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Sub - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3428344531 - NamedType 1665189631" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The mapping cannot be found.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Table Mapping API List - NamedType CannotFindMappingErr</note>
         </trans-unit>
         <trans-unit id="Enum 3727708842 - EnumValue 368050251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assignee</source>

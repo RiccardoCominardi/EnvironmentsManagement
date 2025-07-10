@@ -17,8 +17,8 @@ codeunit 70000 "EOS Restore Environment Mgt"
         HttpMethod: Enum "Http Method";
         ContentTypeLbl: Label 'application/x-www-form-urlencoded', Locked = true;
         UriLbl: Label 'https://login.microsoftonline.com/%1/oauth2/v2.0/token', Locked = true;
-        //Test. Used for testing with a specific tenant
-        TestLbl: Label 'https://login.microsoftonline.com/907e8cf0-8ecd-4057-97be-64f486e792ff/oauth2/v2.0/token', Locked = true;
+    //Test. Used for testing with a specific tenant
+    //TestLbl: Label 'https://login.microsoftonline.com/1f976128-8bbe-4ad7-a713-cbf76c27a7e0/oauth2/v2.0/token', Locked = true;
     begin
         CheckEnvironment();
         CheckSetupForToken();
@@ -322,8 +322,9 @@ codeunit 70000 "EOS Restore Environment Mgt"
     var
         OutStr: OutStream;
         JsonBody: Text;
+        JsonBodyLbl: label '{"environmentName": "%1","type": "sandbox"}', Locked = true;
     begin
-        JsonBody := '{"environmentName": "' + RestEnv."EOS New Environment Name" + '","type": "sandbox"}';
+        JsonBody := StrSubstNo(JsonBodyLbl, RestEnv."EOS New Environment Name");
 
         TempBlob.CreateOutStream(OutStr);
         OutStr.WriteText(JsonBody);

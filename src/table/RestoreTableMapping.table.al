@@ -21,6 +21,11 @@ table 70001 "EOS Restore Table Mapping"
         {
             DataClassification = CustomerContent;
             Caption = 'Source Type';
+            trigger OnValidate()
+            begin
+                if Rec."EOS Source Type" = Rec."EOS Source Type"::"Database" then
+                    Validate("EOS Source No.", '');
+            end;
         }
         field(4; "EOS Source No."; Text[100])
         {

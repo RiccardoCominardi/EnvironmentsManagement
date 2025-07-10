@@ -23,93 +23,7 @@ codeunit 70002 "EOS Restore Fields Mapping"
         ClearDatabaseConfigFields(SourceEnv, DestinationEnv);
     end;
 
-    procedure ExecuteReplaceMappingUI()
-    begin
-        ExecuteReplaceMappingUI('');
-    end;
-
-    procedure ExecuteReplaceMappingUI(RestoreCode: Code[20])
-    var
-        SourceEnv: Enum "Environment Type";
-        DestinationEnv: Enum "Environment Type";
-        Text000Lbl: Label 'Operation Completed';
-    begin
-        if RestoreCode <> '' then
-            GlobalRestoreCode := RestoreCode;
-
-        ClearCompanyConfigFields(CompanyName(), SourceEnv::Production, DestinationEnv::Sandbox);
-        ClearDatabaseConfigFields(SourceEnv::Production, DestinationEnv::Sandbox);
-        GlobalRestoreCode := '';
-
-        if GuiAllowed() then
-            Message(Text000Lbl);
-    end;
-
-    procedure ExecuteReplaceMappingFromAPI()
-    begin
-        ExecuteReplaceMappingFromAPI('');
-    end;
-
-    procedure ExecuteReplaceMappingFromAPI(RestoreCode: Code[20])
-    var
-        Company: Record Company;
-        RestEnv: Record "EOS Restore Environment";
-        RestEnvMgt: Codeunit "EOS Restore Environment Mgt";
-        RestTableMapping: Record "EOS Restore Table Mapping";
-        AzureADTenant: Codeunit "Azure AD Tenant";
-        Headers: HttpHeaders;
-        Client: HttpClient;
-        Content: HttpContent;
-        Request: HttpRequestMessage;
-        Response: HttpResponseMessage;
-        Token: SecretText;
-        HttpMethod: Enum "Http Method";
-        UriToUse: Text;
-        UriLbl: Label 'https://api.businesscentral.dynamics.com/v2.0/%1/%2/api/eos/eosenv/v2.0/companies(%3)/tableMappings(%4)/Microsoft.NAV.executeReplaceMapping', Locked = true;
-        Uri2Lbl: Label 'https://api.businesscentral.dynamics.com/v2.0/%1/%2/api/eos/eosenv/v2.0/companies(%3)/tableMappings(%4)/Microsoft.NAV.executeAllReplaceMappings', Locked = true;
-        Text000Lbl: Label 'Operation Completed';
-        Text000Err: Label '%1 - %2', Locked = true;
-    begin
-        RestEnv.Get();
-        Company.Get(CompanyName());
-        if RestoreCode <> '' then begin
-            RestTableMapping.Get(RestoreCode);
-            UriToUse := StrSubstNo(UriLbl, AzureADTenant.GetAadTenantId(), RestEnv."EOS New Environment Name", GetGuidAsText(Company.Id), GetGuidAsText(RestTableMapping.SystemId));
-        end else begin
-            RestTableMapping.FindFirst();
-            UriToUse := StrSubstNo(Uri2Lbl, AzureADTenant.GetAadTenantId(), RestEnv."EOS New Environment Name", GetGuidAsText(Company.Id), GetGuidAsText(RestTableMapping.SystemId));
-        end;
-
-        //Authentication
-        Headers := Client.DefaultRequestHeaders();
-        Headers.Add('Authorization', SecretText.SecretStrSubstNo('Bearer %1', RestEnvMgt.GetToken()));
-
-        //Set Headers
-        Content.GetHeaders(Headers);
-        if Headers.Contains('Content-Type') then
-            Headers.Remove('Content-Type');
-
-        //Set Request
-        Request.Method := Format(HttpMethod::POST);
-        Request.SetRequestUri(UriToUse);
-        Request.Content(Content);
-
-        if not Client.Send(Request, Response) then
-            Error(GetLastErrorText());
-
-        if Response.HttpStatusCode <> 204 then
-            Error(Text000Err, Response.HttpStatusCode, Response.ReasonPhrase);
-
-        if GuiAllowed() then
-            Message(Text000Lbl);
-    end;
-
-    procedure GetGuidAsText(GuidToConvert: Guid): Text
-    begin
-        exit(LowerCase(Format(GuidToConvert, 0, 4)));
-    end;
-
-    local procedure ClearCompanyConfigFields(CompanyName: Text; SourceEnv: Enum "Environment Type"; DestinationEnv: Enum "Environment Type")
+    internal procedure ClearCompanyConfigFields(CompanyName: Text; SourceEnv: Enum "Environment Type"; DestinationEnv: Enum "Environment Type")
     begin
         if not CheckIsFromProduction(SourceEnv, DestinationEnv) then
             exit;
@@ -160,7 +74,7 @@ codeunit 70002 "EOS Restore Fields Mapping"
         until RestoreTableMapping.Next() = 0;
     end;
 
-    local procedure ClearDatabaseConfigFields(SourceEnv: Enum "Environment Type"; DestinationEnv: Enum "Environment Type")
+    internal procedure ClearDatabaseConfigFields(SourceEnv: Enum "Environment Type"; DestinationEnv: Enum "Environment Type")
     begin
         if not CheckIsFromProduction(SourceEnv, DestinationEnv) then
             exit;
@@ -619,10 +533,15 @@ codeunit 70002 "EOS Restore Fields Mapping"
             exit(false);
     end;
 
+    internal procedure SetRestoreCode(RestoreCode: Code[20])
+    begin
+        GlobalRestoreCode := RestoreCode;
+    end;
+
     procedure ShowInfoMapping()
     var
         RestEnv: Record "EOS Restore Environment";
-        Text000Lbl: Label 'General information for mapping \\1. Codes with "Source Type" field equal to Company will be executed before Database\\2. Codes with "Type" field equal to Delete will be executed before Modify\\3. Action "Execute Replace Mapping" from the list will execute each codes. From the card only the specific one.\\4. Export Excel will export all the mapping details, include the non necessary fields (Table Name - Field Name) only for better comprehension\\5. Import Excel will import the mapping details deleting and recreating everythings. The structure must be the same generated from the export action. The unecessary fields (Table Name - Field Name) will not be considered in import functionality. You can leave it blanks but must be in the file.\\6. Executing the "Import From Excel" action from the card will delete only the specific code. From the list will clean every codes.';
+        Text000Lbl: Label 'General information for mapping \\1. Codes with "Source Type" field equal to Company will be executed before Database\\2. Codes with "Type" field equal to Delete will be executed before Modify\\3. Export Excel will export all the mapping details, include the non necessary fields (Table Name - Field Name) only for better comprehension\\4. Import Excel will import the mapping details deleting and recreating everythings. The structure must be the same generated from the export action. The unecessary fields (Table Name - Field Name) will not be considered in import functionality. You can leave it blanks but must be in the file.\\5. Executing the "Import From Excel" action from the card will delete only the specific code. From the list will clean every codes.';
     begin
         RestEnv.Get();
         if not RestEnv."EOS Info Mapping Message Shown" then begin

@@ -126,7 +126,7 @@ page 70002 "EOS Restore Table Mapping Card"
                 Image = "Invoicing-MDL-Send";
                 trigger OnAction()
                 begin
-                    RestFieldsMapping.ExecuteReplaceMappingFromAPI(Rec."EOS Code");
+                    RestoreAPIMgt.ExecuteReplaceMappingFromAPI(false, Rec."EOS Code");
                 end;
             }
             action(ExportToExcel)
@@ -187,6 +187,7 @@ page 70002 "EOS Restore Table Mapping Card"
 
     var
         RestFieldsMapping: Codeunit "EOS Restore Fields Mapping";
+        RestoreAPIMgt: Codeunit "EOS Restore API Mgt.";
         FieldColor, TableFilters : Text;
         TableFiltersLbl: Label 'Show Filters Applied';
 }
