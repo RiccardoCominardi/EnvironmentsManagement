@@ -20,17 +20,19 @@ page 70004 "EOS Align Table Mapping"
             {
                 field(eosCode; Rec."EOS Code") { }
                 field(payloadBase64; payloadBase64) { }
+                field(executeReplace; executeReplace) { }
             }
         }
     }
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        RestoreAPIMgt.AlignTablesMapping(payloadBase64, true);
+        RestoreAPIMgt.AlignTablesMapping(payloadBase64, executeReplace);
         exit(false) // Prevent the record from being inserted into the table
     end;
 
     var
         RestoreAPIMgt: Codeunit "EOS Restore API Mgt.";
         payloadBase64: Text;
+        executeReplace: Boolean;
 }

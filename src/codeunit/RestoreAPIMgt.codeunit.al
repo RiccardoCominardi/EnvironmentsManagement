@@ -58,7 +58,7 @@ codeunit 70003 "EOS Restore API Mgt."
         Headers.Add('Content-Type', ContentTypeLbl);
 
         //Set Body
-        CreateAlignJsonToSend(TempBlob, RestoreCode);
+        CreateAlignJsonToSend(TempBlob, RestoreCode, true);
         TempBlob.CreateInStream(InStr);
         Content.WriteFrom(InStr);
 
@@ -77,14 +77,14 @@ codeunit 70003 "EOS Restore API Mgt."
                 Message(Text000Lbl);
     end;
 
-    local procedure CreateAlignJsonToSend(var TempBlob: Codeunit "Temp Blob"; MappingCode: Code[20])
+    local procedure CreateAlignJsonToSend(var TempBlob: Codeunit "Temp Blob"; MappingCode: Code[20]; ExecuteReplace: Boolean)
     var
         Base64Convert: Codeunit "Base64 Convert";
         JsonBody: Text;
-        JsonBodyLbl: label '{"eosCode": "ENV","payloadBase64": "%1"}', Locked = true;
+        JsonBodyLbl: label '{"eosCode": "ENV","payloadBase64": "%1","executeReplace": %2}', Locked = true;
         OutStr: OutStream;
     begin
-        JsonBody := StrSubstNo(JsonBodyLbl, Base64Convert.ToBase64(CreateJsonToAlignTablesMapping(MappingCode)));
+        JsonBody := StrSubstNo(JsonBodyLbl, Base64Convert.ToBase64(CreateJsonToAlignTablesMapping(MappingCode)), Format(ExecuteReplace, 0, 9));
         TempBlob.CreateOutStream(OutStr);
         OutStr.WriteText(JsonBody);
     end;
