@@ -27,12 +27,12 @@ page 70004 "EOS Align Table Mapping"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        RestoreAPIMgt.AlignTablesMapping(payloadBase64, executeReplace);
+        RestMappingMgt.AlignTablesMapping(payloadBase64, executeReplace);
         exit(false) // Prevent the record from being inserted into the table
     end;
 
     var
-        RestoreAPIMgt: Codeunit "EOS Restore API Mgt.";
+        RestMappingMgt: Codeunit "EOS Restore Mapping Mgt.";
         payloadBase64: Text;
         executeReplace: Boolean;
 }

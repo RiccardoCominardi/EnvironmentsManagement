@@ -60,16 +60,21 @@ table 70002 "EOS Restore Field Mapping"
             DataClassification = CustomerContent;
             Caption = 'Replace Type';
         }
-        field(7; "EOS Replace Value"; Text[1024])
+        field(7; "EOS Replace Value"; Text[2048])
         {
             DataClassification = CustomerContent;
             Caption = 'Replace Value';
+            trigger OnValidate()
+            begin
+                ValidateReplaceValue();
+            end;
         }
     }
 
     keys
     {
         key(Key1; "EOS Code", "EOS Line No.") { Clustered = true; }
+        key(Key2; "EOS Table No.", "EOS Field No.") { }
     }
 
 
@@ -99,6 +104,33 @@ table 70002 "EOS Restore Field Mapping"
             exit;
 
         Error(Text000Err, Rec."EOS Field No.");
+    end;
+
+    local procedure ValidateReplaceValue()
+    var
+        ConfigValidateMgt: Codeunit "Config. Validate Management";
+        RecRef: RecordRef;
+        FldRef: FieldRef;
+        ValidationError: Text;
+        NewValue: Text;
+    begin
+        if Rec."EOS Field No." = 0 then
+            exit;
+
+        if Rec."EOS Replace Value" = '' then
+            exit;
+
+        RecRef.Open(Rec."EOS Table No.", true);
+        FldRef := RecRef.Field(Rec."EOS Field No.");
+        NewValue := CopyStr(Rec."EOS Replace Value", 1, MaxStrLen(NewValue));
+        ValidationError := CopyStr(ConfigValidateMgt.EvaluateValue(FldRef, NewValue, false), 1, MaxStrLen(ValidationError));
+        if ValidationError <> '' then
+            Error(ValidationError);
+
+        if (FldRef.Type = FldRef.Type::Decimal) or (FldRef.Type = FldRef.Type::Integer) or (FldRef.Type = FldRef.Type::BigInteger) then
+            Rec."EOS Replace Value" := Format(FldRef.Value, 0, 1)
+        else
+            Rec."EOS Replace Value" := Format(FldRef.Value);
     end;
 
     procedure LookupObjectID(var NewObjectID: Integer; ObjType: option ,,,"Report",,"Codeunit"; ObjectId: Integer): Boolean

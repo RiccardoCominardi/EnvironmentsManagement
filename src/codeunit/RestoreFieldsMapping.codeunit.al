@@ -195,21 +195,80 @@ codeunit 70002 "EOS Restore Fields Mapping"
 
     local procedure UpdateFieldRefValue(var FldRef: FieldRef; ReplaceTypes: Enum "EOS Replace Types"; ValueAsText: Text)
     var
+        ConfigValidateMgt: Codeunit "Config. Validate Management";
         ValueAsVariant: Variant;
     begin
-        case FldRef.Type of
-            FldRef.Type::Text,
-            FldRef.Type::Code:
-                ValueAsVariant := ValueAsText;
-            else
-                Evaluate(ValueAsVariant, ValueAsText);
-        end;
-
         case ReplaceTypes of
             ReplaceTypes::Assignee:
-                FldRef.Value := ValueAsVariant;
+                ConfigValidateMgt.EvaluateValue(FldRef, ValueAsText, false);
             ReplaceTypes::"Assignee (With Validation)":
-                FldRef.Validate(ValueAsVariant);
+                ConfigValidateMgt.EvaluateValueWithValidate(FldRef, ValueAsText, true);
+        end;
+    end;
+
+    procedure LookupFieldValueFromLine(RestFieldMapping: Record "EOS Restore Field Mapping"; var FieldValue: Text): Boolean
+    var
+        RecRef: RecordRef;
+        FldRef: FieldRef;
+        RecVar: Variant;
+        LookupTableId, LookupPageId, LookupFieldId : Integer;
+    begin
+        GetLookupParameters(RestFieldMapping, LookupTableId, LookupPageId, LookupFieldId);
+        if (LookupTableId = 0) or (LookupPageId = 0) or (LookupFieldId = 0) then
+            exit(false);
+
+        RecRef.Open(LookupTableId);
+        RecVar := RecRef;
+        if Page.RunModal(LookupPageId, RecVar) = Action::LookupOK then begin
+            RecRef.GetTable(RecVar);
+            FldRef := RecRef.Field(LookupFieldId);
+            FieldValue := Format(FldRef.Value);
+            exit(true);
+        end;
+
+        exit(false);
+    end;
+
+    local procedure GetLookupParameters(RestFieldMapping: Record "EOS Restore Field Mapping"; var LookupTableId: Integer; var LookupPageId: Integer; var LookupFieldId: Integer)
+    var
+        TableMetadata: Record "Table Metadata";
+        TableRelationsMetadata: Record "Table Relations Metadata";
+        RecRef: RecordRef;
+        FldRef: FieldRef;
+    begin
+        TableRelationsMetadata.Reset();
+        TableRelationsMetadata.SetRange("Table ID", RestFieldMapping."EOS Table No.");
+        TableRelationsMetadata.SetRange("Field No.", RestFieldMapping."EOS Field No.");
+        TableRelationsMetadata.ReadIsolation := IsolationLevel::ReadUncommitted;
+        if TableRelationsMetadata.IsEmpty() then
+            exit;
+
+        RecRef.Open(RestFieldMapping."EOS Table No.");
+        FldRef := RecRef.Field(RestFieldMapping."EOS Field No.");
+        if not TableMetadata.Get(FldRef.Relation) then
+            exit;
+
+        LookupTableId := TableMetadata.ID;
+        LookupPageId := TableMetadata.LookupPageID;
+
+        TableRelationsMetadata.SetRange("Related Table ID", TableMetadata.ID);
+        if not TableRelationsMetadata.FindFirst() then
+            exit;
+
+        LookupFieldId := TableRelationsMetadata."Related Field No.";
+    end;
+
+    procedure LookupFieldOptionFromLine(RestFieldMapping: Record "EOS Restore Field Mapping"; var FieldValue: Text): Boolean
+    var
+        TempNameValBuf: Record "Name/Value Buffer" temporary;
+        RestOptionPicker: Page "EOS Restore Option Picker";
+    begin
+        RestOptionPicker.LookupMode := true;
+        RestOptionPicker.SetParameter(RestFieldMapping."EOS Table No.", RestFieldMapping."EOS Field No.");
+        if RestOptionPicker.RunModal() = Action::LookupOK then begin
+            RestOptionPicker.GetRecord(TempNameValBuf);
+            FieldValue := TempNameValBuf.Value;
+            exit(true);
         end;
     end;
 

@@ -1,4 +1,4 @@
-codeunit 70003 "EOS Restore API Mgt."
+codeunit 70003 "EOS Restore Mapping Mgt."
 {
     trigger OnRun()
     begin

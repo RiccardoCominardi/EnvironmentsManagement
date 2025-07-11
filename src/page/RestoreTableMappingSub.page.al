@@ -7,18 +7,13 @@ page 70003 "EOS Restore Table Mapping Sub"
     MultipleNewLines = true;
     PageType = ListPart;
     SourceTable = "EOS Restore Field Mapping";
-
+    SourceTableView = sorting("EOS Table No.", "EOS Field No.");
     layout
     {
         area(Content)
         {
             repeater(Control1)
             {
-                field("EOS Line No."; Rec."EOS Line No.")
-                {
-                    ApplicationArea = All;
-                    Editable = false;
-                }
                 field("EOS Field No."; Rec."EOS Field No.")
                 {
                     ApplicationArea = All;
@@ -38,6 +33,11 @@ page 70003 "EOS Restore Table Mapping Sub"
                 field("EOS Replace Value"; Rec."EOS Replace Value")
                 {
                     ApplicationArea = All;
+                    trigger OnLookup(var Text: Text): Boolean
+                    begin
+                        if LookupFieldValue(Text) then
+                            Rec.Validate("EOS Replace Value", CopyStr(Text, 1, MaxStrLen(Rec."EOS Replace Value")));
+                    end;
                 }
             }
         }
@@ -53,5 +53,18 @@ page 70003 "EOS Restore Table Mapping Sub"
     begin
         if RestTableMapping.Get(Rec."EOS Code") then
             Rec."EOS Table No." := RestTableMapping."EOS Table No.";
+    end;
+
+    local procedure LookupFieldValue(var FieldValue: Text): Boolean
+    var
+        RestFieldsMapping: Codeunit "EOS Restore Fields Mapping";
+    begin
+        if Rec."EOS Field No." = 0 then
+            exit(false);
+
+        if RestFieldsMapping.LookupFieldValueFromLine(Rec, FieldValue) then
+            exit(true)
+        else
+            exit(RestFieldsMapping.LookupFieldOptionFromLine(Rec, FieldValue));
     end;
 }

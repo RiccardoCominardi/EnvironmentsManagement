@@ -376,20 +376,16 @@
           <target>Questa azione cancella e ricrea il codice %1 sulla base del file Excel. Continuare?</target>
         </trans-unit>
         <trans-unit id="Codeunit 1773623840 - Method 1258532027 - NamedType 1327832897" translate="yes" size-unit="char" xml:space="preserve">
-          <source>General information for mapping \\1. Codes with "Source Type" field equal to Company will be executed before Database\\2. Codes with "Type" field equal to Delete will be executed before Modify\\3. Action "Execute Replace Mapping" from the list will execute each codes. From the card only the specific one.\\4. Export Excel will export all the mapping details, include the non necessary fields (Table Name - Field Name) only for better comprehension\\5. Import Excel will import the mapping details deleting and recreating everythings. The structure must be the same generated from the export action. The unecessary fields (Table Name - Field Name) will not be considered in import functionality. You can leave it blanks but must be in the file.\\6. Executing the "Import From Excel" action from the card will delete only the specific code. From the list will clean every codes.</source>
+          <source>General information for mapping \\1. Codes with "Source Type" field equal to Company will be executed before Database\\2. Codes with "Type" field equal to Delete will be executed before Modify\\3. Export Excel will export all the mapping details, include the non necessary fields (Table Name - Field Name) only for better comprehension\\4. Import Excel will import the mapping details deleting and recreating everythings. The structure must be the same generated from the export action. The unecessary fields (Table Name - Field Name) will not be considered in import functionality. You can leave it blanks but must be in the file.\\5. Executing the "Import From Excel" action from the card will delete only the specific code. From the list will clean every codes.</source>
           <target>Informazioni generali per il mapping \\1. I codici con il "Tipo origine" uguale a Società vengono eseguiti prima di quelli di tipo Database\\2. I codici con "Tipo" elimina vengono eseguiti prima di quelli di tipo modifica.\\3. L'action "Esporta in excel" esporta il dettaglio di tutto il mapping, compreso dei campi non obbligatori (Nome tabella - Nome campo) solo per una migliore comprensione.\\4. L'action "Importa da Excel" importa cancellando e ricreando tutto quanto. La struttura deve essere identica da quella generata dall'action "Esporta in Excel". I campi non obbligatori dovranno essere presenti nel file anche se non verranno processati.\\5. Eseguendo l'action "Importa da Excel" dalla card elimina e ricrea tutto il mapping di solo quel codice. Dalla lista elimina e ricrea tutto quanto</target>
         </trans-unit>
-        <trans-unit id="Page 3428344531 - NamedType 1665189631" translate="yes" size-unit="char" xml:space="preserve">
-          <source>The mapping cannot be found.</source>
-          <target>Mapping non può essere trovato</target>
-        </trans-unit>
-        <trans-unit id="Codeunit 2838312707 - NamedType 1327832897" translate="yes" size-unit="char" xml:space="preserve">
+        <trans-unit id="Codeunit 2794557175 - NamedType 1327832897" translate="yes" size-unit="char" xml:space="preserve">
           <source>Operation Completed</source>
           <target>Operazione completata</target>
         </trans-unit>
-        <trans-unit id="Codeunit 2838312707 - Method 596577147 - NamedType 1745287229" translate="yes" size-unit="char" xml:space="preserve">
-          <source>Do you want to update first the table mapping in the destination environment?</source>
-          <target>Vuoi aggiornare il mapping nell'ambiente di destinazione prima di continuare?</target>
+        <trans-unit id="Page 173258320 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Pick</source>
+          <target>Seleziona</target>
         </trans-unit>
       </group>
     </body>

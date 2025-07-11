@@ -163,11 +163,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Field EOS Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2838312707 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Operation Completed</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore API Mgt. - NamedType Text000Lbl</note>
-        </trans-unit>
         <trans-unit id="Codeunit 583858742 - Method 951961053 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cannot execute this funcionality in a non-production environment.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -278,6 +273,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Fields Mapping - Method ShowInfoMapping - NamedType Text000Lbl</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2794557175 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operation Completed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Mapping Mgt. - NamedType Text000Lbl</note>
+        </trans-unit>
         <trans-unit id="Page 471369648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Restore Environment (ENV)</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -357,6 +357,11 @@
           <source>Try Connection</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action TryConnection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 173258320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pick</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Option Picker - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2722868633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table Mapping (ENV)</source>
