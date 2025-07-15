@@ -196,7 +196,6 @@ codeunit 70002 "EOS Restore Fields Mapping"
     local procedure UpdateFieldRefValue(var FldRef: FieldRef; ReplaceTypes: Enum "EOS Replace Types"; ValueAsText: Text)
     var
         ConfigValidateMgt: Codeunit "Config. Validate Management";
-        ValueAsVariant: Variant;
     begin
         case ReplaceTypes of
             ReplaceTypes::Assignee:
