@@ -40,6 +40,7 @@ table 70000 "EOS Restore Environment"
         {
             DataClassification = CustomerContent;
             Caption = 'Waiting Time Type';
+            InitValue = "After Deletion";
         }
         field(8; "EOS Waiting Fixed Time (ms)"; Integer)
         {
