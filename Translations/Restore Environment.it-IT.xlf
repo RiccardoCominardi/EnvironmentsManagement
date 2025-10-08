@@ -36,12 +36,8 @@
           <target>Operazione completata. L'ambiente %1 attualmente è in stato %2</target>
         </trans-unit>
         <trans-unit id="Codeunit 583858742 - Method 2356848215 - NamedType 4204058380" translate="yes" size-unit="char" xml:space="preserve">
-          <source>Job Queue is already present in company %1. Open the setup in that specific company or delete and recreate the job queue entry.</source>
-          <target>La coda processi è già presente nella società %1. Apri il setup in quella società o cancella e ricrea la coda</target>
-        </trans-unit>
-        <trans-unit id="Codeunit 583858742 - Method 2653096382 - NamedType 1327832897" translate="yes" size-unit="char" xml:space="preserve">
-          <source>Restore Environment (ENV)</source>
-          <target>Ripristina ambiente (ENV)</target>
+          <source>Job Queue %1 is already present in company %2. Open the setup in that specific company or delete and recreate the job queue entry.</source>
+          <target>La coda processi %1 è già presente nella società %2. Apri il setup in quella società o cancella e ricrea la coda</target>
         </trans-unit>
         <trans-unit id="Codeunit 1773623840 - Method 1147532894 - NamedType 1327832897" translate="yes" size-unit="char" xml:space="preserve">
           <source>Invalid File</source>
@@ -386,6 +382,202 @@
         <trans-unit id="Page 173258320 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
           <source>Pick</source>
           <target>Seleziona</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 2356848215 - NamedType 2316870939" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Job Queue %1 is already present in the same company. Cannot create another one.</source>
+          <target>La coda processi %1 è già presente in questa società. Non è possibile crearne un'altra</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 341217787 - NamedType 1327832897" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Restore Environment (ENV)</source>
+          <target>Ripristina ambiente (ENV)</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 2587614607 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates the Client Id used to connect to the Admin Center API.</source>
+          <target>Specifica il Client Id da usare per connettersi alle API dell'admin center</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 2536478188 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates if the connection to the Admin Center API is working.</source>
+          <target>Indica se la connessione all'admin center sta funzionando</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 1686736337 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates the due date of the Secret Id used to connect to the Admin Center API.</source>
+          <target>Specifica la data di scadenza del Secret Id</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 4133968198 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates the Secret Id used to connect to the Admin Center API.</source>
+          <target>Specifica il Secret Id da usare per connettersi alle API dell'admin center</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 322628400 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates the date and time when the token was authorized.</source>
+          <target>Indica la data e ora dell'ultimo token ricevuto</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 3485336150 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates if there is a token available to connect to the Admin Center API.</source>
+          <target>Indica se è presente un token per connettersi all'admin center</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 2197174634 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates the status of the token.</source>
+          <target>Indica lo stato attuale del token</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 2944148827 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Deletes the job queue entries related to the restore process.</source>
+          <target>Elimina la coda processi, in tutte le società, relativa al ripristino dell'ambiente</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 1226686359 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Decides which function to execute based on the current configuration.</source>
+          <target>Permette l'esecuzione di funzioni collegate al ripristino dell'ambiente</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 2950639144 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates the name of the production environment to restore from.</source>
+          <target>Indica il nome dell'ambiente di produzione da cui clonare</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 4238666553 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates the name of the new environment to create when restoring.</source>
+          <target>Indica il nome del nuovo ambiente che verrà creato a partire da produzione</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 972296345 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the type of waiting time to apply when deleting the existing environment.</source>
+          <target>Specifica il tipo di attesa dopo la cancellazione dell'ambiente</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 926283306 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates the fixed waiting time in milliseconds to apply when deleting the existing environment.</source>
+          <target>Indica il tempo fisso, in millisecondi, da aspettare una volta eliminato l'ambiente. Dopo quel tempo partirà la copia dell'ambiente di produzione</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 1094314435 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates the maximum number of attempts to check if the environment has been deleted.</source>
+          <target>Indica il numero massimo di tentativi da eseguire per controllare se l'ambiente è stato cancellato correttamente</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 1193759973 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates the waiting time in milliseconds between attempts to check if the environment has been deleted.</source>
+          <target>Indica il tempo di attesa, dopo ogni tentativo, per controllare se l'ambiente è stato cancellato correttamente</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 2792281505 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Starts the environment restore process based on the current configuration.</source>
+          <target>Inizia il processo di ripristino dell'ambiente basato sulla configurazione attuale</target>
+        </trans-unit>
+        <trans-unit id="Page 173258320 - Control 2961552353 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the name of the option.</source>
+          <target>Specifica il campo nome</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Control 3210361224 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the code of the mapping.</source>
+          <target>Specifica il codice univoco da assegnare al mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 1090334467 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Tests the connection to the Admin Center API using the provided Client Id and Secret Id.</source>
+          <target>Testa la connessione alle API dell'admin center usando il Client Id e il Secret Id impostati</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 2351941779 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Opens the page to manage the mapping of fields that will be substituted during the restore process.</source>
+          <target>Apre la pagina per gestire il mapping dei campi che verranno sovrascritti in fase di ripristino dell'ambiente</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 3001626052 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Opens the Job Queue Entries page to view and manage the job queue entries related to the restore process.</source>
+          <target>Apre e crea la coda processi per gestire in automatico il ripristino schedulato dell'ambiente</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Control 949770657 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the description of the mapping.</source>
+          <target>Specifica il campo descrizione del mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Control 2394593088 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates whether the mapping is enabled.</source>
+          <target>Specifica se il mapping è abilitato</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Control 384231925 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the Source No. for the mapping.</source>
+          <target>Specifica il Nr. origine del mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Control 309010296 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the source type for the mapping.</source>
+          <target>Specifica il Tipo origine del mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Control 1195889500 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the table number for the mapping.</source>
+          <target>Specifica il numero di tabella su cui il mapping si baserà</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Control 3456033531 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the type of operation for the mapping.</source>
+          <target>Specifica la tipologia del mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Action 4082531897 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Executes the replacement of mappings, on the new environment, based on the selected code.</source>
+          <target>Esegui il ripristino del mapping, sul nuovo ambiente, basato sul codice selezionato</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Action 3477538018 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Exports the structure of the mapping to an Excel file.</source>
+          <target>Esporta la struttura del file Excel per l'import del mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Action 2851454604 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Exports the current mapping to an Excel file.</source>
+          <target>Esporta il mapping corrente in Excel</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Action 3545432896 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Imports mapping data from an Excel file for the specified code.</source>
+          <target>Importa il mapping, per il codice in cui sei posizionato, da un file Excel</target>
+        </trans-unit>
+        <trans-unit id="Page 2722868633 - Action 1223814878 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Shows detailed information about the mapping.</source>
+          <target>Mostra informazioni riguardo il mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Control 3210361224 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the code of the mapping.</source>
+          <target>Specifica il codice univoco da assegnare al mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Action 3477538018 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Exports the structure of the mapping to an Excel file.</source>
+          <target>Esporta la struttura del file Excel per l'import del mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Control 2394593088 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates whether the mapping is enabled.</source>
+          <target>Specifica se il mapping è abilitato</target>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Control 384231925 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the Source No. for the mapping.</source>
+          <target>Specifica il Nr. origine del mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Control 309010296 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the source type for the mapping.</source>
+          <target>Specifica il Tipo origine del mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Control 3456033531 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the type of operation for the mapping.</source>
+          <target>Specifica la tipologia del mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Control 949770657 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the description of the mapping.</source>
+          <target>Specifica il campo descrizione del mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Action 1223814878 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Shows detailed information about the mapping.</source>
+          <target>Mostra informazioni riguardo il mapping</target>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Action 4082531897 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Executes the replacement of mappings, on the new environment, for all codes.</source>
+          <target>Esegui il ripristino dei mappings, sul nuovo ambiente, per tutti i codici</target>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Action 2851454604 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Exports the all mappings to an Excel file.</source>
+          <target>Esporta tutti i mapping in Excel</target>
+        </trans-unit>
+        <trans-unit id="Page 1462320587 - Action 3545432896 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Imports mapping data from an Excel file for all codes.</source>
+          <target>Importa tutti i mapping da un file Excel</target>
+        </trans-unit>
+        <trans-unit id="Page 3603533785 - Control 2080924904 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the name of the field for the mapping.</source>
+          <target>Specifica il nome del campo da modificare</target>
+        </trans-unit>
+        <trans-unit id="Page 3603533785 - Control 1320056944 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the field number for the mapping.</source>
+          <target>Specifica l'id del campo da modificare</target>
+        </trans-unit>
+        <trans-unit id="Page 3603533785 - Control 97974655 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the replace type for the mapping.</source>
+          <target>Specifica il tipo tipo di modifica che subirà il campo</target>
+        </trans-unit>
+        <trans-unit id="Page 3603533785 - Control 1756253562 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the replace value for the mapping.</source>
+          <target>Specifica il nuovo valore da inserire nel campo</target>
         </trans-unit>
       </group>
     </body>

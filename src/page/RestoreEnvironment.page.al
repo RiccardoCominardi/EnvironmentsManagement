@@ -19,6 +19,7 @@ page 70000 "EOS Restore Environment"
                 field("EOS Client Id"; Rec."EOS Client Id")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Indicates the Client Id used to connect to the Admin Center API.';
                     trigger OnValidate()
                     begin
                         Rec."EOS Connection Is Up" := false;
@@ -28,6 +29,7 @@ page 70000 "EOS Restore Environment"
                 {
                     ApplicationArea = All;
                     Caption = 'Secret Id', Locked = true;
+                    ToolTip = 'Indicates the Secret Id used to connect to the Admin Center API.';
                     ExtendedDatatype = Masked;
                     trigger OnValidate()
                     var
@@ -41,10 +43,12 @@ page 70000 "EOS Restore Environment"
                 field("EOS Secret Due Date"; Rec."EOS Secret Due Date")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Indicates the due date of the Secret Id used to connect to the Admin Center API.';
                 }
                 field("EOS Connection Is Up"; Rec."EOS Connection Is Up")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Indicates if the connection to the Admin Center API is working.';
                     Editable = false;
                 }
                 group(Token)
@@ -53,18 +57,21 @@ page 70000 "EOS Restore Environment"
                     field(EOSToken; Rec.HasToken(Rec."EOS Token"))
                     {
                         Caption = 'Token Present';
+                        ToolTip = 'Indicates if there is a token available to connect to the Admin Center API.';
                         ApplicationArea = All;
                         Editable = false;
                     }
                     field("EOS Token Authorization Time"; Rec."EOS Token Authorization Time")
                     {
                         Caption = 'Authorization Time';
+                        ToolTip = 'Indicates the date and time when the token was authorized.';
                         ApplicationArea = All;
                         Editable = false;
                     }
                     field(EOSTokenStatus; TokenStatus)
                     {
                         ApplicationArea = All;
+                        ToolTip = 'Indicates the status of the token.';
                         Editable = false;
                         ShowCaption = false;
                         StyleExpr = TokenColor;
@@ -78,12 +85,14 @@ page 70000 "EOS Restore Environment"
                 field("EOS Prod. Environment Name"; Rec."EOS Prod. Environment Name")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Indicates the name of the production environment to restore from.';
                     //Test. Disable "Editable" properties to change the environment name manually
                     Editable = false;
                 }
                 field("EOS New Environment Name"; Rec."EOS New Environment Name")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Indicates the name of the new environment to create when restoring.';
                 }
                 group(Delete)
                 {
@@ -91,20 +100,24 @@ page 70000 "EOS Restore Environment"
                     field("EOS Waiting Time Type"; Rec."EOS Waiting Time Type")
                     {
                         ApplicationArea = All;
+                        ToolTip = 'Specifies the type of waiting time to apply when deleting the existing environment.';
                     }
                     field("EOS Waiting Fixed Time (ms)"; Rec."EOS Waiting Fixed Time (ms)")
                     {
                         ApplicationArea = All;
+                        ToolTip = 'Indicates the fixed waiting time in milliseconds to apply when deleting the existing environment.';
                         Editable = Rec."EOS Waiting Time Type" = Rec."EOS Waiting Time Type"::"Fixed Time";
                     }
                     field("EOS Wait. Time Attempt (ms)"; Rec."EOS Wait. Time Attempt (ms)")
                     {
                         ApplicationArea = All;
+                        ToolTip = 'Indicates the waiting time in milliseconds between attempts to check if the environment has been deleted.';
                         Editable = Rec."EOS Waiting Time Type" = Rec."EOS Waiting Time Type"::"After Deletion";
                     }
                     field("EOS Max No. Of Attemps"; Rec."EOS Max No. Of Attemps")
                     {
                         ApplicationArea = All;
+                        ToolTip = 'Indicates the maximum number of attempts to check if the environment has been deleted.';
                         Editable = Rec."EOS Waiting Time Type" = Rec."EOS Waiting Time Type"::"After Deletion";
                     }
                 }
@@ -120,6 +133,7 @@ page 70000 "EOS Restore Environment"
             {
                 ApplicationArea = All;
                 Caption = 'Try Connection';
+                ToolTip = 'Tests the connection to the Admin Center API using the provided Client Id and Secret Id.';
                 Image = Link;
                 trigger OnAction()
                 begin
@@ -131,6 +145,7 @@ page 70000 "EOS Restore Environment"
             {
                 ApplicationArea = All;
                 Caption = 'Execute Function';
+                ToolTip = 'Decides which function to execute based on the current configuration.';
                 Image = "Invoicing-MDL-Send";
                 trigger OnAction()
                 begin
@@ -142,6 +157,7 @@ page 70000 "EOS Restore Environment"
             {
                 ApplicationArea = All;
                 Caption = 'Execute Restore';
+                ToolTip = 'Starts the environment restore process based on the current configuration.';
                 Image = "Invoicing-MDL-Send";
                 trigger OnAction()
                 begin
@@ -152,6 +168,7 @@ page 70000 "EOS Restore Environment"
             {
                 ApplicationArea = All;
                 Caption = 'Open Fields Mapping';
+                ToolTip = 'Opens the page to manage the mapping of fields that will be substituted during the restore process.';
                 Image = OpenJournal;
                 trigger OnAction()
                 begin
@@ -162,17 +179,19 @@ page 70000 "EOS Restore Environment"
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Job Queue Entry';
+                ToolTip = 'Opens the Job Queue Entries page to view and manage the job queue entries related to the restore process.';
                 Image = JobListSetup;
 
                 trigger OnAction()
                 begin
-                    RestEnvMgt.JobQueueEntry();
+                    RestEnvMgt.ShowJobQueueEntry();
                 end;
             }
             action(DeleteJobQueueEntryFlow)
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Delete Job Queue Entry';
+                ToolTip = 'Deletes the job queue entries related to the restore process.';
                 Image = Delete;
 
                 trigger OnAction()

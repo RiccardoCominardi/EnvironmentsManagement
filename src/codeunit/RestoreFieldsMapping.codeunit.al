@@ -39,6 +39,7 @@ codeunit 70002 "EOS Restore Fields Mapping"
         RestoreTableMapping.Reset();
         if GlobalRestoreCode <> '' then
             RestoreTableMapping.SetRange("EOS Code", GlobalRestoreCode);
+
         RestoreTableMapping.SetRange("EOS Source Type", RestoreTableMapping."EOS Source Type"::Company);
         RestoreTableMapping.SetRange("EOS Source No.", CompanyName);
         RestoreTableMapping.SetRange("EOS Type", RestoreTableMapping."EOS Type"::Modify);
@@ -442,7 +443,7 @@ codeunit 70002 "EOS Restore Fields Mapping"
         FileName: Text;
         InStr: InStream;
         Result: Boolean;
-        Text000Qst: Label 'This action will delete and recreate code %1 based on Excel files. Continue?';
+        Text000Qst: Label 'This action will delete and recreate code %1 based on Excel files. Continue?', Comment = '%1: Restore Code';
         Text000Lbl: Label 'Invalid File';
         Text001Lbl: Label 'Import Completed';
     begin
@@ -471,7 +472,7 @@ codeunit 70002 "EOS Restore Fields Mapping"
         TempExcelBuffer: Record "Excel Buffer" temporary;
         CurrExcelRow, NoOfRecords : Integer;
         Window: Dialog;
-        Text000Lbl: Label 'Import Records: #1########';
+        Text000Lbl: Label 'Import Records: #1########', Comment = '#1: Number of records imported';
     begin
         TempExcelBuffer.Reset();
         TempExcelBuffer.DeleteAll();

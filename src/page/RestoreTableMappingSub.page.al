@@ -17,6 +17,7 @@ page 70003 "EOS Restore Table Mapping Sub"
                 field("EOS Field No."; Rec."EOS Field No.")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the field number for the mapping.';
                     trigger OnValidate()
                     begin
                         CurrPage.Update();
@@ -25,14 +26,17 @@ page 70003 "EOS Restore Table Mapping Sub"
                 field("EOS Field Name"; Rec."EOS Field Name")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the name of the field for the mapping.';
                 }
                 field("EOS Replace Type"; Rec."EOS Replace Type")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the replace type for the mapping.';
                 }
                 field("EOS Replace Value"; Rec."EOS Replace Value")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the replace value for the mapping.';
                     trigger OnLookup(var Text: Text): Boolean
                     begin
                         if LookupFieldValue(Text) then

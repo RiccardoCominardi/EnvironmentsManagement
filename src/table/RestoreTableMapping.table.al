@@ -57,7 +57,7 @@ table 70001 "EOS Restore Table Mapping"
             var
                 AllObj: Record AllObj;
                 ObjType: option "TableData","Table",,"Report",,"Codeunit";
-                ObjNotFoundErr: Label 'There is no Table with ID %1';
+                ObjNotFoundErr: Label 'There is no Table with ID %1', Comment = '%1 = Table No.';
             begin
                 if Rec."EOS Table No." = 0 then
                     exit;
@@ -88,6 +88,7 @@ table 70001 "EOS Restore Table Mapping"
     keys
     {
         key(Key1; "EOS Code") { Clustered = true; }
+        key(Key2; "EOS Source Type", "EOS Source No.", "EOS Type", "EOS Enabled") { }
     }
 
     trigger OnDelete()

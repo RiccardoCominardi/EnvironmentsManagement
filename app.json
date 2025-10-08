@@ -5,11 +5,11 @@
   "version": "26.0.0.0",
   "brief": "Restore Environment",
   "description": "Restore Environment",
-  "privacyStatement": "",
-  "EULA": "",
-  "help": "",
-  "url": "",
-  "logo": "",
+	"privacyStatement":  "https://www.eos-solutions.it/en/privacy.html",
+	"EULA":  "https://www.eos-solutions.it/en/eula.html",
+	"help": "http://help.eos-solutions.it/",
+	"url": "https://www.eos-solutions.it/",
+	"logo": "./etc/images/AppLogo.png",
   "features": [
     "TranslationFile"
   ],

@@ -37,7 +37,7 @@ table 70002 "EOS Restore Field Mapping"
             trigger OnValidate()
             var
                 Field: Record Field;
-                ObjNotFoundErr: Label 'There is no field with ID %1 in table %2.';
+                ObjNotFoundErr: Label 'There is no field with ID %1 in table %2.', Comment = '%1 = Field No., %2 = Table No.';
             begin
                 if Rec."EOS Field No." = 0 then
                     exit;
@@ -94,7 +94,7 @@ table 70002 "EOS Restore Field Mapping"
     local procedure CheckDuplicatedField()
     var
         RestFieldMapping: Record "EOS Restore Field Mapping";
-        Text000Err: Label 'Field No. %1 is already used';
+        Text000Err: Label 'Field No. %1 is already used', Comment = '%1 = Field No.';
     begin
         RestFieldMapping.Reset();
         RestFieldMapping.SetRange("EOS Code", Rec."EOS Code");

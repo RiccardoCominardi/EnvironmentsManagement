@@ -60,7 +60,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         Property, ResponseText : Text;
         JObject: JsonObject;
         JToken: JsonToken;
-        Text000Err: Label 'Invalid Access Token Property %1, Value:  %2';
+        Text000Err: Label 'Invalid Access Token Property %1, Value:  %2', Comment = '%1: Property Name, %2: Property Value';
     begin
         Response.Content.ReadAs(ResponseText);
 
@@ -125,7 +125,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
 
     local procedure CheckSetupForToken()
     var
-        Text000Err: label 'Field %1 must be filled in.';
+        Text000Err: label 'Field %1 must be filled in.', Comment = '%1: Field Name';
     begin
         RestEnv.Get();
         RestEnv.TestField("EOS Client Id");
@@ -344,7 +344,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         Text000Lbl: Label 'Choose a function to execute';
         Text001Lbl: Label 'Delete Environment,Get Environment Status,Copy Environment,Cancel';
         Text002Lbl: Label 'Operation Completed. Check the status of the environment in the admincenter or use the function Get Environment Status';
-        Text003Lbl: Label 'Operation Completed. Environment %1 is currently in status %2.';
+        Text003Lbl: Label 'Operation Completed. Environment %1 is currently in status %2.', Comment = '%1: Environment Name, %2: Status';
     begin
         if not GuiAllowed() then
             exit;
@@ -391,17 +391,21 @@ codeunit 70000 "EOS Restore Environment Mgt"
     [EventSubscriber(ObjectType::Table, Database::"Job Queue Entry", 'OnAfterInsertEvent', '', false, false)]
     local procedure T472_OnAfterInsertEvent(var Rec: Record "Job Queue Entry")
     begin
-        FindJobQueueInCompanies();
+        FindJobQueueInCompanies(Rec);
     end;
 
-    procedure JobQueueEntry()
+    [EventSubscriber(ObjectType::Table, Database::"Job Queue Entry", 'OnAfterModifyEvent', '', false, false)]
+    local procedure T472_OnAfterModifyEvent(var Rec: Record "Job Queue Entry")
+    begin
+        FindJobQueueInCompanies(Rec);
+    end;
+
+    procedure ShowJobQueueEntry()
     var
         JQueueEntry: Record "Job Queue Entry";
         JobQueueEntryCard: Page "Job Queue Entry Card";
         Text000Lbl: Label 'Restore Environment (ENV)';
     begin
-        FindJobQueueInCompanies();
-
         JQueueEntry.Reset();
         JQueueEntry.SetRange("Object Type to Run", JQueueEntry."Object Type to Run"::Codeunit);
         JQueueEntry.SetRange("Object ID to Run", Codeunit::"EOS Restore Job Queue");
@@ -421,13 +425,30 @@ codeunit 70000 "EOS Restore Environment Mgt"
         JobQueueEntryCard.RunModal();
     end;
 
-    local procedure FindJobQueueInCompanies() CompanyNameList: List of [Text[30]]
+    local procedure FindJobQueueInCompanies(JobQueueEntry: Record "Job Queue Entry")
     var
         JQueueEntry: Record "Job Queue Entry";
         Company: Record Company;
-        Text000Err: Label 'Job Queue is already present in company %1. Open the setup in that specific company or delete and recreate the job queue entry.';
+        Text000Err: Label 'Job Queue %1 is already present in company %2. Open the setup in that specific company or delete and recreate the job queue entry.', Comment = '%1: Job Queue Name, %2: Company Name';
+        Text001Err: Label 'Job Queue %1 is already present in the same company. Cannot create another one.', Comment = '%1: Job Queue Name';
     begin
+        if (JobQueueEntry."Object Type to Run" <> JobQueueEntry."Object Type to Run"::Codeunit) or (JobQueueEntry."Object ID to Run" <> Codeunit::"EOS Restore Job Queue") then
+            exit;
+
+        //Check in the current company if the job queue is already present
+        JQueueEntry.Reset();
+        JQueueEntry.SetFilter(SystemId, '<> %1', JobQueueEntry.SystemId);
+        JQueueEntry.SetRange("Object Type to Run", JQueueEntry."Object Type to Run"::Codeunit);
+        JQueueEntry.SetRange("Object ID to Run", Codeunit::"EOS Restore Job Queue");
+        if not JQueueEntry.IsEmpty() then
+            Error(Text001Err, Codeunit::"EOS Restore Job Queue");
+
+        //Check if the job queue is already present in other companies
         Company.Reset();
+        Company.SetFilter(Name, '<> %1', CompanyName);
+        if Company.IsEmpty() then
+            exit;
+
         Company.FindSet();
         repeat
             JQueueEntry.Reset();
@@ -435,11 +456,8 @@ codeunit 70000 "EOS Restore Environment Mgt"
             JQueueEntry.SetRange("Object Type to Run", JQueueEntry."Object Type to Run"::Codeunit);
             JQueueEntry.SetRange("Object ID to Run", Codeunit::"EOS Restore Job Queue");
             if not JQueueEntry.IsEmpty() then
-                CompanyNameList.Add(Company.Name);
+                Error(Text000Err, Codeunit::"EOS Restore Job Queue", Company.Name);
         until Company.Next() = 0;
-
-        if not (CompanyNameList.Contains(CopyStr(CompanyName(), 1, 30))) and (CompanyNameList.Count() > 0) then
-            Error(Text000Err, CompanyNameList.Get(1));
     end;
 
     procedure DeleteRestoreJobQueue()
@@ -447,7 +465,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         Company: Record Company;
         JQueueEntry: Record "Job Queue Entry";
         Counter: Integer;
-        Text000Lbl: Label 'Deleted %1 Job Queue Entries';
+        Text000Lbl: Label 'Deleted %1 Job Queue Entries', Comment = '%1: Number of Job Queue Entries deleted';
         Text001Lbl: Label 'No Job Queue Entries to delete';
     begin
         Company.Reset();

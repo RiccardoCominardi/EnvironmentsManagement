@@ -19,6 +19,7 @@ page 70005 "EOS Restore Option Picker"
                 field(Name; Rec.Value)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the name of the option.';
                 }
             }
         }

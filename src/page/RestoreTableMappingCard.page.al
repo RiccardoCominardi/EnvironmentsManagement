@@ -16,22 +16,27 @@ page 70002 "EOS Restore Table Mapping Card"
                 field("EOS Code"; Rec."EOS Code")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the code of the mapping.';
                 }
                 field("EOS Description"; Rec."EOS Description")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the description of the mapping.';
                 }
                 field("EOS Enabled"; Rec."EOS Enabled")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Indicates whether the mapping is enabled.';
                 }
                 field("EOS Source Type"; Rec."EOS Source Type")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the source type for the mapping.';
                 }
                 field("EOS Source No."; Rec."EOS Source No.")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the Source No. for the mapping.';
                     Editable = Rec."EOS Source Type" = Rec."EOS Source Type"::Company;
                     Lookup = true;
                     trigger OnLookup(var Text: Text): Boolean
@@ -65,10 +70,12 @@ page 70002 "EOS Restore Table Mapping Card"
                 field("EOS Type"; Rec."EOS Type")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the type of operation for the mapping.';
                 }
                 field("EOS Table No."; Rec."EOS Table No.")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the table number for the mapping.';
                     trigger OnValidate()
                     begin
                         CurrPage.Update();
@@ -113,6 +120,7 @@ page 70002 "EOS Restore Table Mapping Card"
             {
                 ApplicationArea = All;
                 Caption = 'Info Mapping', Locked = true;
+                ToolTip = 'Shows detailed information about the mapping.';
                 Image = Info;
                 trigger OnAction()
                 begin
@@ -123,6 +131,7 @@ page 70002 "EOS Restore Table Mapping Card"
             {
                 ApplicationArea = All;
                 Caption = 'Execute Replace Mapping';
+                ToolTip = 'Executes the replacement of mappings, on the new environment, based on the selected code.';
                 Image = "Invoicing-MDL-Send";
                 trigger OnAction()
                 begin
@@ -133,6 +142,7 @@ page 70002 "EOS Restore Table Mapping Card"
             {
                 ApplicationArea = All;
                 Caption = 'Export To Excel';
+                ToolTip = 'Exports the current mapping to an Excel file.';
                 Image = ExportToExcel;
                 trigger OnAction()
                 var
@@ -147,6 +157,7 @@ page 70002 "EOS Restore Table Mapping Card"
             {
                 ApplicationArea = All;
                 Caption = 'Export Excel Structure';
+                ToolTip = 'Exports the structure of the mapping to an Excel file.';
                 Image = ExportToExcel;
                 trigger OnAction()
                 begin
@@ -157,6 +168,7 @@ page 70002 "EOS Restore Table Mapping Card"
             {
                 ApplicationArea = All;
                 Caption = 'Import From Excel';
+                ToolTip = 'Imports mapping data from an Excel file for the specified code.';
                 Image = ImportExcel;
                 trigger OnAction()
                 begin
