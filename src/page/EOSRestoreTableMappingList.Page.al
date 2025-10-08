@@ -67,7 +67,7 @@ page 70001 "EOS Restore Table Mapping List"
             {
                 ApplicationArea = All;
                 Caption = 'Execute Replace Mapping';
-                ToolTip = 'Executes the replacement of mappings, on the new environment, for all codes.';
+                ToolTip = 'Executes the replacement of mappings, on the new environment, based on the selected code.';
                 Image = "Invoicing-MDL-Send";
                 trigger OnAction()
                 begin
@@ -78,7 +78,7 @@ page 70001 "EOS Restore Table Mapping List"
             {
                 ApplicationArea = All;
                 Caption = 'Export To Excel';
-                ToolTip = 'Exports the all mappings to an Excel file.';
+                ToolTip = 'Exports the selected mappings to an Excel file.';
                 Image = ExportToExcel;
                 trigger OnAction()
                 var

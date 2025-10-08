@@ -552,12 +552,12 @@
           <target>Mostra informazioni riguardo il mapping</target>
         </trans-unit>
         <trans-unit id="Page 1462320587 - Action 4082531897 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
-          <source>Executes the replacement of mappings, on the new environment, for all codes.</source>
-          <target>Esegui il ripristino dei mappings, sul nuovo ambiente, per tutti i codici</target>
+          <source>Executes the replacement of mappings, on the new environment, based on the selected code.</source>
+          <target>Esegui il ripristino del mapping, sul nuovo ambiente, basato sul codice selezionato</target>
         </trans-unit>
         <trans-unit id="Page 1462320587 - Action 2851454604 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
-          <source>Exports the all mappings to an Excel file.</source>
-          <target>Esporta tutti i mapping in Excel</target>
+          <source>Exports the selected mappings to an Excel file.</source>
+          <target>Esporta i mapping selezionati in Excel</target>
         </trans-unit>
         <trans-unit id="Page 1462320587 - Action 3545432896 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
           <source>Imports mapping data from an Excel file for all codes.</source>

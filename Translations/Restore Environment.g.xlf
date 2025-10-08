@@ -604,7 +604,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping List - Control EOS Type - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1462320587 - Action 4082531897 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Executes the replacement of mappings, on the new environment, for all codes.</source>
+          <source>Executes the replacement of mappings, on the new environment, based on the selected code.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping List - Action ExecuteReplaceMapping - Property ToolTip</note>
         </trans-unit>
@@ -624,7 +624,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping List - Action ExportExcelStructure - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1462320587 - Action 2851454604 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Exports the all mappings to an Excel file.</source>
+          <source>Exports the selected mappings to an Excel file.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping List - Action ExportToExcel - Property ToolTip</note>
         </trans-unit>
