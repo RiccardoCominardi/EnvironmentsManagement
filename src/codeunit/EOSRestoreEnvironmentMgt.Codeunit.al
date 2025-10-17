@@ -14,6 +14,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         Content: HttpContent;
         Request: HttpRequestMessage;
         Response: HttpResponseMessage;
+        ResponseText: Text;
         HttpMethod: Enum "Http Method";
         ContentTypeLbl: Label 'application/x-www-form-urlencoded', Locked = true;
         UriLbl: Label 'https://login.microsoftonline.com/%1/oauth2/v2.0/token', Locked = true;
@@ -50,6 +51,10 @@ codeunit 70000 "EOS Restore Environment Mgt"
 
         if not Client.Send(Request, Response) then
             Error(GetLastErrorText());
+
+        if not (Response.HttpStatusCode in [200, 201, 202]) then
+            if Response.Content.ReadAs(ResponseText) then
+                Error(ResponseText);
 
         UpdateTokenValue(Response);
         exit(GetExistingToken());
@@ -191,6 +196,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         Content: HttpContent;
         Request: HttpRequestMessage;
         Response: HttpResponseMessage;
+        ResponseText: Text;
         HttpMethod: Enum "Http Method";
         UriLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.21/applications/BusinessCentral/environments/%1', Locked = true;
     begin
@@ -213,6 +219,10 @@ codeunit 70000 "EOS Restore Environment Mgt"
 
         if not Client.Send(Request, Response) then
             Error(GetLastErrorText());
+
+        if not (Response.HttpStatusCode in [200, 201, 202]) then
+            if Response.Content.ReadAs(ResponseText) then
+                Error(ResponseText);
     end;
 
     local procedure CopyEnvironment()
@@ -225,6 +235,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         Request: HttpRequestMessage;
         Response: HttpResponseMessage;
         HttpMethod: Enum "Http Method";
+        ResponseText: Text;
         ContentTypeLbl: Label 'application/json', Locked = true;
         UriLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.21/applications/BusinessCentral/environments/%1/copy', Locked = true;
     begin
@@ -253,6 +264,10 @@ codeunit 70000 "EOS Restore Environment Mgt"
 
         if not Client.Send(Request, Response) then
             Error(GetLastErrorText());
+
+        if not (Response.HttpStatusCode in [200, 201, 202]) then
+            if Response.Content.ReadAs(ResponseText) then
+                Error(ResponseText);
     end;
 
     procedure GetEnvironmentInfo() Status: Enum "EOS Environment Status"
@@ -262,6 +277,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         Content: HttpContent;
         Request: HttpRequestMessage;
         Response: HttpResponseMessage;
+        ResponseText: Text;
         HttpMethod: Enum "Http Method";
         UriLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.21/applications/BusinessCentral/environments/%1', Locked = true;
     begin
@@ -284,6 +300,10 @@ codeunit 70000 "EOS Restore Environment Mgt"
 
         if not Client.Send(Request, Response) then
             Error(GetLastErrorText());
+
+        if not (Response.HttpStatusCode in [200, 201, 202]) then
+            if Response.Content.ReadAs(ResponseText) then
+                Error(ResponseText);
 
         Status := GetStatusFromResponse(Response);
     end;

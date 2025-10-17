@@ -39,6 +39,7 @@ codeunit 70003 "EOS Restore Mapping Mgt."
         Response: HttpResponseMessage;
         HttpMethod: Enum "Http Method";
         InStr: InStream;
+        ResponseText: Text;
         ContentTypeLbl: Label 'application/json', Locked = true;
         UriLbl: Label 'https://api.businesscentral.dynamics.com/v2.0/%1/%2/api/eos/eosenv/v2.0/companies(%3)/alignTableMappings', Locked = true;
     //Test. Used for testing with a specific tenant and company
@@ -71,6 +72,10 @@ codeunit 70003 "EOS Restore Mapping Mgt."
 
         if not Client.Send(Request, Response) then
             Error(GetLastErrorText());
+
+        if not (Response.HttpStatusCode in [200, 201, 202]) then
+            if Response.Content.ReadAs(ResponseText) then
+                Error(ResponseText);
 
         if not HideDialog then
             if GuiAllowed() then

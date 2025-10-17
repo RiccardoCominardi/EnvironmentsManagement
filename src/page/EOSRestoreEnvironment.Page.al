@@ -19,6 +19,7 @@ page 70000 "EOS Restore Environment"
                 field("EOS Client Id"; Rec."EOS Client Id")
                 {
                     ApplicationArea = All;
+                    Caption = 'Client Id', Locked = true;
                     ToolTip = 'Indicates the Client Id used to connect to the Admin Center API.';
                     trigger OnValidate()
                     begin

@@ -21,9 +21,9 @@
         {
             "type": "al",
             "request": "launch",
-            "name": "Koso Parcol - Dev",
-            "tenant": "1f976128-8bbe-4ad7-a713-cbf76c27a7e0",
-            "environmentName": "SandBox_Dev",
+            "name": "San Carlo - Clone",
+            "tenant": "4d873250-9238-4eed-9f20-9aa79490ebac",
+            "environmentName": "ITClone",
             "environmentType": "Sandbox",
             "authentication": "AAD",
             "breakOnError": true,
