@@ -431,11 +431,15 @@ codeunit 70000 "EOS Restore Environment Mgt"
         JQueueEntry.SetRange("Object ID to Run", Codeunit::"EOS Restore Job Queue");
         JQueueEntry.ReadIsolation := IsolationLevel::ReadUncommitted;
         if JQueueEntry.IsEmpty() then begin
-            JQueueEntry.InitRecurringJob(1440);
+            //Not possible to use this function because automatically it will set the queue to "Ready", raising an error due to missing permission on the Microsoft account
+            //JQueueEntry.ScheduleRecurrentJobQueueEntryWithRunDateFormula(JQueueEntry."Object Type to Run"::Codeunit, Codeunit::"EOS Restore Job Queue", RecId, '', 0, RunDateFormula, 0T);
+            JQueueEntry.Init();
             JQueueEntry."Object Type to Run" := JQueueEntry."Object Type to Run"::Codeunit;
             JQueueEntry."Object ID to Run" := Codeunit::"EOS Restore Job Queue";
             JQueueEntry.Description := Text000Lbl;
             JQueueEntry.Status := JQueueEntry.Status::"On Hold";
+            Evaluate(JQueueEntry."Next Run Date Formula", '<1D>');
+            JQueueEntry.Validate("Next Run Date Formula");
             JQueueEntry.Insert(true);
             Commit();
         end else

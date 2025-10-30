@@ -168,6 +168,7 @@ codeunit 70003 "EOS Restore Mapping Mgt."
         JObject.Get('fields', JToken);
         AlignFieldsMapping(RestTableMapping, JToken.AsArray());
 
+        Commit();
         if ExecuteReplace then
             ExecuteReplaceMapping(true, RestTableMapping."EOS Code");
     end;

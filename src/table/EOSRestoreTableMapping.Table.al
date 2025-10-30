@@ -121,7 +121,7 @@ table 70001 "EOS Restore Table Mapping"
         if Filters <> '' then
             PageFilterBuilder.SetView(RecRef.Caption, Filters);
         if PageFilterBuilder.RunModal() then begin
-            Filters := PageFilterBuilder.GetView(RecRef.Caption, true);
+            Filters := PageFilterBuilder.GetView(RecRef.Caption, false);
             Rec."EOS Table Filter".CreateOutStream(OutStr);
             OutStr.Write(Filters);
         end;
@@ -129,8 +129,9 @@ table 70001 "EOS Restore Table Mapping"
 
     procedure SetTableFilterNoUI(Filters: Text)
     var
-        OutStr: outstream;
+        OutStr: OutStream;
     begin
+        Clear(Rec."EOS Table Filter");
         Rec."EOS Table Filter".CreateOutStream(OutStr);
         OutStr.Write(Filters);
     end;
