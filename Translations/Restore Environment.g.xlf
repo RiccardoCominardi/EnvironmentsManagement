@@ -113,6 +113,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3289261557 - Method 804474859 - NamedType 1909523816" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot rename a %1.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = Table Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Table Mapping - Method OnRename - NamedType NoRenameErr</note>
+        </trans-unit>
         <trans-unit id="Table 3289261557 - Field 3210361224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
           <note from="Developer" annotates="general" priority="2"></note>

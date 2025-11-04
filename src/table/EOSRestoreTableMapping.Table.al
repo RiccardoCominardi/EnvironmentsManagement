@@ -100,6 +100,13 @@ table 70001 "EOS Restore Table Mapping"
         RestoreFieldMapping.DeleteAll(true);
     end;
 
+    trigger OnRename()
+    var
+        NoRenameErr: Label 'You cannot rename a %1.', Comment = '%1 = Table Caption';
+    begin
+        Error(NoRenameErr, Rec.TableCaption());
+    end;
+
     procedure GetTableFilter() ValueAsText: Text
     var
         InStr: InStream;
