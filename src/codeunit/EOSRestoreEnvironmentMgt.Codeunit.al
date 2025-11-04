@@ -151,8 +151,8 @@ codeunit 70000 "EOS Restore Environment Mgt"
         CheckEnvironment();
         CheckSetup();
 
-        //Delete the environment first
-        DeleteEnvironment();
+        if GetEnvironmentInfo() = Enum::"EOS Environment Status"::Active then
+            DeleteEnvironment();
 
         case RestEnv."EOS Waiting Time Type" of
             "EOS Waiting Time Types"::"Fixed Time":
@@ -182,7 +182,6 @@ codeunit 70000 "EOS Restore Environment Mgt"
                 end;
         end;
 
-        //Copy the environment
         CopyEnvironment();
 
         if GuiAllowed() then
@@ -277,11 +276,11 @@ codeunit 70000 "EOS Restore Environment Mgt"
         Content: HttpContent;
         Request: HttpRequestMessage;
         Response: HttpResponseMessage;
-        ResponseText: Text;
+        //ResponseText: Text;
         HttpMethod: Enum "Http Method";
         UriLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.21/applications/BusinessCentral/environments/%1', Locked = true;
     begin
-        CheckEnvironment();
+        //CheckEnvironment();
         CheckSetup();
 
         //Authentication
@@ -301,9 +300,10 @@ codeunit 70000 "EOS Restore Environment Mgt"
         if not Client.Send(Request, Response) then
             Error(GetLastErrorText());
 
-        if not (Response.HttpStatusCode in [200, 201, 202]) then
-            if Response.Content.ReadAs(ResponseText) then
-                Error(ResponseText);
+        //Error not to handle beacause 404 is possible and it means that the environment is not present
+        //if not (Response.HttpStatusCode in [200, 201, 202]) then
+        //    if Response.Content.ReadAs(ResponseText) then
+        //        Error(ResponseText);
 
         Status := GetStatusFromResponse(Response);
     end;
