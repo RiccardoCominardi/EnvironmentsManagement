@@ -65,7 +65,7 @@
         </trans-unit>
         <trans-unit id="Codeunit 583858742 - Method 3120216751 - NamedType 2316870939" translate="yes" size-unit="char" xml:space="preserve">
           <source>Maximum number of attempts reached. Please try again later.</source>
-          <target>Raggiunto il numero massimo di tentativi. Rirpova più tardi</target>
+          <target>Raggiunto il numero massimo di tentativi. Riprovare più tardi</target>
         </trans-unit>
         <trans-unit id="Codeunit 583858742 - Method 3120216751 - NamedType 1753513791" translate="yes" size-unit="char" xml:space="preserve">
           <source>Operation Completed. Check the status of the environment in the admincenter or use the function Get Environment Status</source>

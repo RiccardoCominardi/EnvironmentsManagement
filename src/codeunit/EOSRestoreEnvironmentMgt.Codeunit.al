@@ -1,5 +1,6 @@
 codeunit 70000 "EOS Restore Environment Mgt"
 {
+    SingleInstance = true;
     trigger OnRun()
     begin
 
@@ -420,6 +421,30 @@ codeunit 70000 "EOS Restore Environment Mgt"
         FindJobQueueInCompanies(Rec);
     end;
 
+    [EventSubscriber(ObjectType::Page, Page::"Job Queue Entries", OnBeforeActionEvent, 'RunInForeground', false, false)]
+    local procedure P672_OnBeforeActionEvent(var Rec: Record "Job Queue Entry")
+    begin
+        SetRunOnce(true);
+    end;
+
+    [EventSubscriber(ObjectType::Page, Page::"Job Queue Entries", OnAfterActionEvent, 'RunInForeground', false, false)]
+    local procedure P672_OnAfterActionEvent(var Rec: Record "Job Queue Entry")
+    begin
+        SetRunOnce(false);
+    end;
+
+    [EventSubscriber(ObjectType::Page, Page::"Job Queue Entry Card", OnBeforeActionEvent, 'RunInForeground', false, false)]
+    local procedure P673_OnBeforeActionEvent(var Rec: Record "Job Queue Entry")
+    begin
+        SetRunOnce(true);
+    end;
+
+    [EventSubscriber(ObjectType::Page, Page::"Job Queue Entry Card", OnAfterActionEvent, 'RunInForeground', false, false)]
+    local procedure P673_OnAfterActionEvent(var Rec: Record "Job Queue Entry")
+    begin
+        SetRunOnce(false);
+    end;
+
     procedure ShowJobQueueEntry()
     var
         JQueueEntry: Record "Job Queue Entry";
@@ -457,6 +482,9 @@ codeunit 70000 "EOS Restore Environment Mgt"
         Text001Err: Label 'Job Queue %1 is already present in the same company. Cannot create another one.', Comment = '%1: Job Queue Name';
     begin
         if (JobQueueEntry."Object Type to Run" <> JobQueueEntry."Object Type to Run"::Codeunit) or (JobQueueEntry."Object ID to Run" <> Codeunit::"EOS Restore Job Queue") then
+            exit;
+
+        if IsRunOnce then
             exit;
 
         //Check in the current company if the job queue is already present
@@ -511,6 +539,11 @@ codeunit 70000 "EOS Restore Environment Mgt"
                 Message(Text001Lbl);
     end;
 
+    procedure SetRunOnce(RunOnce: Boolean)
+    begin
+        IsRunOnce := RunOnce;
+    end;
+
     procedure CheckEnvironment()
     var
         EnvironmentInfo: Codeunit "Environment Information";
@@ -523,4 +556,6 @@ codeunit 70000 "EOS Restore Environment Mgt"
 
     var
         RestEnv: Record "EOS Restore Environment";
+        IsRunOnce: Boolean;
+
 }
