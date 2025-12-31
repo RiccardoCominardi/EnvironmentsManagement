@@ -13,11 +13,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 471369648 - Field 2536478188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Connection Is Up</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Environment - Field EOS Connection Is Up - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 471369648 - Field 1094314435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Max No. Of Attemps</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -323,11 +318,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Control EOS Client Id - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 471369648 - Control 2536478188 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Indicates if the connection to the Admin Center API is working.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Control EOS Connection Is Up - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 471369648 - Control 1686736337 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Indicates the due date of the Secret Id used to connect to the Admin Center API.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -433,6 +423,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action ExecuteRestore - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 471369648 - Action 3218354727 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gets a new token from the Admin Center API using the provided Client Id and Secret Id.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action GetToken - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 3218354727 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Get Token</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action GetToken - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 471369648 - Action 3001626052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Opens the Job Queue Entries page to view and manage the job queue entries related to the restore process.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -453,16 +453,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action OpenFieldsMapping - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 471369648 - Action 1090334467 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tests the connection to the Admin Center API using the provided Client Id and Secret Id.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action TryConnection - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 471369648 - Action 1090334467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Try Connection</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Environment - Action TryConnection - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 173258320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pick</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -479,7 +469,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Card - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2722868633 - NamedType 705097697" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show Filters Applied</source>
+          <source>Show filters applied</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Table Mapping Card - NamedType TableFiltersLbl</note>
         </trans-unit>

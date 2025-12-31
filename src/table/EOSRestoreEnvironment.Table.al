@@ -57,6 +57,9 @@ table 70000 "EOS Restore Environment"
         {
             DataClassification = CustomerContent;
             Caption = 'Connection Is Up';
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Replaced by Get Token action on page.';
+            ObsoleteTag = '27.0';
         }
         field(11; "EOS Token"; Guid)
         {

@@ -291,16 +291,12 @@
           <source>Open Fields Mapping</source>
           <target>Apri mapping campi</target>
         </trans-unit>
-        <trans-unit id="Page 471369648 - Action 1090334467 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
-          <source>Try Connection</source>
-          <target>Prova connessione</target>
-        </trans-unit>
         <trans-unit id="Page 2722868633 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
           <source>Table Mapping (ENV)</source>
           <target>Mapping tabella (ENV)</target>
         </trans-unit>
         <trans-unit id="Page 2722868633 - NamedType 705097697" translate="yes" size-unit="char" xml:space="preserve">
-          <source>Show Filters Applied</source>
+          <source>Show filters applied</source>
           <target>Mostra filtri applicati</target>
         </trans-unit>
         <trans-unit id="Page 2722868633 - Control 2445482498 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
@@ -347,10 +343,6 @@
           <source>Code</source>
           <target>Codice</target>
         </trans-unit>
-        <trans-unit id="Table 471369648 - Field 2536478188 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
-          <source>Connection Is Up</source>
-          <target>Connessione attiva</target>
-        </trans-unit>
         <trans-unit id="Page 471369648 - Control 322628400 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
           <source>Authorization Time</source>
           <target>Data-ora autorizzazione</target>
@@ -394,10 +386,6 @@
         <trans-unit id="Page 471369648 - Control 2587614607 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
           <source>Indicates the Client Id used to connect to the Admin Center API.</source>
           <target>Specifica il Client Id da usare per connettersi alle API dell'admin center</target>
-        </trans-unit>
-        <trans-unit id="Page 471369648 - Control 2536478188 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
-          <source>Indicates if the connection to the Admin Center API is working.</source>
-          <target>Indica se la connessione all'admin center sta funzionando</target>
         </trans-unit>
         <trans-unit id="Page 471369648 - Control 1686736337 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
           <source>Indicates the due date of the Secret Id used to connect to the Admin Center API.</source>
@@ -462,10 +450,6 @@
         <trans-unit id="Page 2722868633 - Control 3210361224 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
           <source>Specifies the code of the mapping.</source>
           <target>Specifica il codice univoco da assegnare al mapping</target>
-        </trans-unit>
-        <trans-unit id="Page 471369648 - Action 1090334467 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
-          <source>Tests the connection to the Admin Center API using the provided Client Id and Secret Id.</source>
-          <target>Testa la connessione alle API dell'admin center usando il Client Id e il Secret Id impostati</target>
         </trans-unit>
         <trans-unit id="Page 471369648 - Action 2351941779 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
           <source>Opens the page to manage the mapping of fields that will be substituted during the restore process.</source>
@@ -582,6 +566,14 @@
         <trans-unit id="Table 3289261557 - Method 804474859 - NamedType 1909523816" translate="yes" size-unit="char" xml:space="preserve">
           <source>You cannot rename a %1.</source>
           <target>Impossibile rinominare %1.</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 3218354727 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Get Token</source>
+          <target>Ottieni token</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 3218354727 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Gets a new token from the Admin Center API using the provided Client Id and Secret Id.</source>
+          <target>Ottieni un nuovo token dall'API dell'admin center utilizzando il Client Id e il Secret Id specificati</target>
         </trans-unit>
       </group>
     </body>

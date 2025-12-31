@@ -5,7 +5,6 @@ page 70002 "EOS Restore Table Mapping Card"
     UsageCategory = None;
     RefreshOnActivate = true;
     SourceTable = "EOS Restore Table Mapping";
-
     layout
     {
         area(Content)
@@ -17,11 +16,13 @@ page 70002 "EOS Restore Table Mapping Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the code of the mapping.';
+                    Editable = not Rec."EOS Enabled";
                 }
                 field("EOS Description"; Rec."EOS Description")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the description of the mapping.';
+                    Editable = not Rec."EOS Enabled";
                 }
                 field("EOS Enabled"; Rec."EOS Enabled")
                 {
@@ -32,12 +33,13 @@ page 70002 "EOS Restore Table Mapping Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the source type for the mapping.';
+                    Editable = not Rec."EOS Enabled";
                 }
                 field("EOS Source No."; Rec."EOS Source No.")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the Source No. for the mapping.';
-                    Editable = Rec."EOS Source Type" = Rec."EOS Source Type"::Company;
+                    Editable = (Rec."EOS Source Type" = Rec."EOS Source Type"::Company) and not Rec."EOS Enabled";
                     Lookup = true;
                     trigger OnLookup(var Text: Text): Boolean
                     var
@@ -71,11 +73,13 @@ page 70002 "EOS Restore Table Mapping Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the type of operation for the mapping.';
+                    Editable = not Rec."EOS Enabled";
                 }
                 field("EOS Table No."; Rec."EOS Table No.")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the table number for the mapping.';
+                    Editable = not Rec."EOS Enabled";
                     trigger OnValidate()
                     begin
                         CurrPage.Update();
@@ -95,6 +99,9 @@ page 70002 "EOS Restore Table Mapping Card"
                     StyleExpr = FieldColor;
                     trigger OnDrillDown()
                     begin
+                        if Rec."EOS Enabled" then
+                            exit;
+
                         Rec.SetTableFilter(TableFilters);
                         CurrPage.Update(true);
                     end;
@@ -103,8 +110,7 @@ page 70002 "EOS Restore Table Mapping Card"
             part(FieldLines; "EOS Restore Table Mapping Sub")
             {
                 ApplicationArea = Basic, Suite;
-                Editable = Rec."EOS Type" = Rec."EOS Type"::Modify;
-                Enabled = Rec."EOS Type" = Rec."EOS Type"::Modify;
+                Editable = not Rec."EOS Enabled";
                 Visible = Rec."EOS Type" = Rec."EOS Type"::Modify;
                 SubPageLink = "EOS Code" = field("EOS Code");
                 UpdatePropagation = Both;
@@ -201,5 +207,5 @@ page 70002 "EOS Restore Table Mapping Card"
         RestFieldsMapping: Codeunit "EOS Restore Fields Mapping";
         RestMappingMgt: Codeunit "EOS Restore Mapping Mgt.";
         FieldColor, TableFilters : Text;
-        TableFiltersLbl: Label 'Show Filters Applied';
+        TableFiltersLbl: Label 'Show filters applied';
 }

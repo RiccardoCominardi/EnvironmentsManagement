@@ -363,9 +363,9 @@ codeunit 70002 "EOS Restore Fields Mapping"
         TempExcelBuffer.NewRow();
         TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Code", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Description", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-        TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Source Type", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+        TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Source Type".AsInteger(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Source No.", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-        TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Type", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+        TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Type".AsInteger(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Table No.", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Table Name", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn(RestoreTableMapping.GetTableFilter(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
@@ -391,16 +391,16 @@ codeunit 70002 "EOS Restore Fields Mapping"
             TempExcelBuffer.NewRow();
             TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Code", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
             TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Description", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Source Type", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Source Type".AsInteger(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
             TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Source No.", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Type", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Type".AsInteger(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
             TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Table No.", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
             TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Table Name", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
             TempExcelBuffer.AddColumn(RestoreTableMapping.GetTableFilter(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
             TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Enabled", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
             TempExcelBuffer.AddColumn(RestoreFieldMapping."EOS Field No.", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
             TempExcelBuffer.AddColumn(RestoreFieldMapping."EOS Field Name", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-            TempExcelBuffer.AddColumn(RestoreFieldMapping."EOS Replace Type", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+            TempExcelBuffer.AddColumn(RestoreFieldMapping."EOS Replace Type".AsInteger(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
             TempExcelBuffer.AddColumn(RestoreFieldMapping."EOS Replace Value", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         until RestoreFieldMapping.Next() = 0;
     end;
@@ -557,30 +557,27 @@ codeunit 70002 "EOS Restore Fields Mapping"
         exit(true);
     end;
 
-    procedure EvaluateSourceTypeEnum(EnumAsText: Text) SourceType: Enum "EOS Source Types"
+    procedure EvaluateSourceTypeEnum(OrdinalValueAsText: Text) SourceType: Enum "EOS Source Types"
     var
-        Index, OrdinalValue : Integer;
+        OrdinalValue: Integer;
     begin
-        Index := SourceType.Names.IndexOf(EnumAsText);
-        OrdinalValue := SourceType.Ordinals.Get(Index);
+        Evaluate(OrdinalValue, OrdinalValueAsText);
         SourceType := Enum::"EOS Source Types".FromInteger(OrdinalValue);
     end;
 
-    procedure EvaluateReplaceTypeEnum(EnumAsText: Text) ReplaceType: Enum "EOS Replace Types"
+    procedure EvaluateReplaceTypeEnum(OrdinalValueAsText: Text) ReplaceType: Enum "EOS Replace Types"
     var
-        Index, OrdinalValue : Integer;
+        OrdinalValue: Integer;
     begin
-        Index := ReplaceType.Names.IndexOf(EnumAsText);
-        OrdinalValue := ReplaceType.Ordinals.Get(Index);
+        Evaluate(OrdinalValue, OrdinalValueAsText);
         ReplaceType := Enum::"EOS Replace Types".FromInteger(OrdinalValue);
     end;
 
-    procedure EvaluateTypeEnum(EnumAsText: Text) Types: Enum "EOS Types"
+    procedure EvaluateTypeEnum(OrdinalValueAsText: Text) Types: Enum "EOS Types"
     var
-        Index, OrdinalValue : Integer;
+        OrdinalValue: Integer;
     begin
-        Index := Types.Names.IndexOf(EnumAsText);
-        OrdinalValue := Types.Ordinals.Get(Index);
+        Evaluate(OrdinalValue, OrdinalValueAsText);
         Types := Enum::"EOS Types".FromInteger(OrdinalValue);
     end;
 

@@ -23,7 +23,7 @@ page 70000 "EOS Restore Environment"
                     ToolTip = 'Indicates the Client Id used to connect to the Admin Center API.';
                     trigger OnValidate()
                     begin
-                        Rec."EOS Connection Is Up" := false;
+                        ClearTokenInfo();
                     end;
                 }
                 field("EOS Secret Id"; SecretId)
@@ -38,19 +38,13 @@ page 70000 "EOS Restore Environment"
                     begin
                         SecretIdValue := SecretId;
                         Rec.SetToken(Rec."EOS Secret Id", SecretIdValue);
-                        Rec."EOS Connection Is Up" := false;
+                        ClearTokenInfo();
                     end;
                 }
                 field("EOS Secret Due Date"; Rec."EOS Secret Due Date")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Indicates the due date of the Secret Id used to connect to the Admin Center API.';
-                }
-                field("EOS Connection Is Up"; Rec."EOS Connection Is Up")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Indicates if the connection to the Admin Center API is working.';
-                    Editable = false;
                 }
                 group(Token)
                 {
@@ -130,15 +124,15 @@ page 70000 "EOS Restore Environment"
     {
         area(Processing)
         {
-            action(TryConnection)
+            action(GetToken)
             {
                 ApplicationArea = All;
-                Caption = 'Try Connection';
-                ToolTip = 'Tests the connection to the Admin Center API using the provided Client Id and Secret Id.';
+                Caption = 'Get Token';
+                ToolTip = 'Gets a new token from the Admin Center API using the provided Client Id and Secret Id.';
                 Image = Link;
                 trigger OnAction()
                 begin
-                    RestEnvMgt.TryConnection();
+                    RestEnvMgt.GetToken(true);
                     CurrPage.Update();
                 end;
             }
@@ -204,7 +198,7 @@ page 70000 "EOS Restore Environment"
 
         area(Promoted)
         {
-            actionref(TryConnection_Promoted; TryConnection) { }
+            actionref(GetToken_Promoted; GetToken) { }
             actionref(ExecuteFunction_Promoted; ExecuteFunction) { }
             actionref(ExecuteRestore_Promoted; ExecuteRestore) { }
             actionref(OpenFieldsMapping_Promoted; OpenFieldsMapping) { }
@@ -241,6 +235,14 @@ page 70000 "EOS Restore Environment"
             Error(Text000Err);
     end;
 
+    local procedure ClearTokenInfo()
+    begin
+        Rec.DeleteToken(Rec."EOS Token");
+        Rec."EOS Token Authorization Time" := 0DT;
+        Rec."EOS Token Expires In" := 0;
+        SetTokenFields();
+    end;
+
     local procedure SetTokenFields()
     var
         Text000Lbl: Label 'No Token';
@@ -275,8 +277,5 @@ page 70000 "EOS Restore Environment"
     var
         RestEnvMgt: Codeunit "EOS Restore Environment Mgt";
         EnvInfo: Codeunit "Environment Information";
-        TokenStatus, TokenColor : Text;
-
-    protected var
-        SecretId: Text;
+        SecretId, TokenStatus, TokenColor : Text;
 }

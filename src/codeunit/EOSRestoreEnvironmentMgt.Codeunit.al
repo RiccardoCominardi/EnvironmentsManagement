@@ -7,7 +7,12 @@ codeunit 70000 "EOS Restore Environment Mgt"
     end;
 
     #region TokenFunctions
-    procedure GetToken() Token: SecretText
+    procedure GetToken(): SecretText
+    begin
+        exit(GetToken(false));
+    end;
+
+    procedure GetToken(ForceNew: Boolean): SecretText
     var
         AzureADTenant: Codeunit "Azure AD Tenant";
         Headers: HttpHeaders;
@@ -19,14 +24,15 @@ codeunit 70000 "EOS Restore Environment Mgt"
         HttpMethod: Enum "Http Method";
         ContentTypeLbl: Label 'application/x-www-form-urlencoded', Locked = true;
         UriLbl: Label 'https://login.microsoftonline.com/%1/oauth2/v2.0/token', Locked = true;
-    //Test. Used for testing with a specific tenant
-    //TestLbl: Label 'https://login.microsoftonline.com/1f976128-8bbe-4ad7-a713-cbf76c27a7e0/oauth2/v2.0/token', Locked = true;
+        //Test. Used for testing with a specific tenant
+        //TestLbl: Label 'https://login.microsoftonline.com/1f976128-8bbe-4ad7-a713-cbf76c27a7e0/oauth2/v2.0/token', Locked = true;
     begin
         CheckEnvironment();
         CheckSetupForToken();
 
-        if HasValidToken() then
-            exit(GetExistingToken());
+        if not ForceNew then
+            if HasValidToken() then
+                exit(GetExistingToken());
 
         //Authentication
         Headers := Client.DefaultRequestHeaders();
@@ -394,19 +400,6 @@ codeunit 70000 "EOS Restore Environment Mgt"
             4:
                 exit;
         end;
-    end;
-
-    procedure TryConnection()
-    var
-        Token: SecretText;
-    begin
-        Token := GetToken();
-        if not Token.IsEmpty() then
-            RestEnv."EOS Connection Is Up" := true
-        else
-            RestEnv."EOS Connection Is Up" := false;
-
-        RestEnv.Modify();
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Job Queue Entry", 'OnAfterInsertEvent', '', false, false)]
