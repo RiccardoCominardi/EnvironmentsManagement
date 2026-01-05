@@ -89,6 +89,11 @@ page 70000 "EOS Restore Environment"
                     ApplicationArea = All;
                     ToolTip = 'Indicates the name of the new environment to create when restoring.';
                 }
+                field("EOS Enable Log"; Rec."EOS Enable Log")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Indicates whether logging is enabled for the restore environment process.';
+                }
                 group(Delete)
                 {
                     Caption = 'Delete';
@@ -135,6 +140,14 @@ page 70000 "EOS Restore Environment"
                     RestEnvMgt.GetToken(true);
                     CurrPage.Update();
                 end;
+            }
+            action(RequestsLog)
+            {
+                ApplicationArea = All;
+                Caption = 'Requests Log';
+                ToolTip = 'Opens the log of the restore requests mades.';
+                Image = Log;
+                RunObject = Page "EOS Restore Requests Log";
             }
             action(ExecuteFunction)
             {
@@ -199,11 +212,22 @@ page 70000 "EOS Restore Environment"
         area(Promoted)
         {
             actionref(GetToken_Promoted; GetToken) { }
-            actionref(ExecuteFunction_Promoted; ExecuteFunction) { }
-            actionref(ExecuteRestore_Promoted; ExecuteRestore) { }
+            group(FunctionsGroup)
+            {
+                Caption = 'Execute Restore';
+                ShowAs = SplitButton;
+                actionref(ExecuteRestore_Promoted; ExecuteRestore) { }
+                actionref(ExecuteFunction_Promoted; ExecuteFunction) { }
+            }
+            actionref(RequestsLog_Promoted; RequestsLog) { }
             actionref(OpenFieldsMapping_Promoted; OpenFieldsMapping) { }
-            actionref(JobQueueEntryFlow_Promoted; JobQueueEntryFlow) { }
-            actionref(DeleteJobQueueEntryFlow_Promoted; DeleteJobQueueEntryFlow) { }
+            group(JobQueueGroup)
+            {
+                Caption = 'Job Queue Entry';
+                ShowAs = SplitButton;
+                actionref(JobQueueEntryFlow_Promoted; JobQueueEntryFlow) { }
+                actionref(DeleteJobQueueEntryFlow_Promoted; DeleteJobQueueEntryFlow) { }
+            }
         }
     }
 

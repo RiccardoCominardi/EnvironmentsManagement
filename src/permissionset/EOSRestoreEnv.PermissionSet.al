@@ -9,6 +9,8 @@ permissionset 70000 "EOS Restore Env."
         tabledata "EOS Restore Table Mapping" = RIMD,
         table "EOS Restore Field Mapping" = X,
         tabledata "EOS Restore Field Mapping" = RIMD,
+        table "EOS Restore Requests Log" = X,
+        tabledata "EOS Restore Requests Log" = RIMD,
         codeunit "EOS Restore Environment Mgt" = X,
         codeunit "EOS Restore Job Queue" = X,
         codeunit "EOS Restore Fields Mapping" = X,

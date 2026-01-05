@@ -4,6 +4,8 @@ codeunit 70001 "EOS Restore Job Queue"
     trigger OnRun()
     begin
         RestEnvMgt.RestoreEnvironment();
+
+        RestEnvMgt.UpdateLogRecords();
     end;
 
     var

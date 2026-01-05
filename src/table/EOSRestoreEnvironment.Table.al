@@ -87,6 +87,11 @@ table 70000 "EOS Restore Environment"
             DataClassification = CustomerContent;
             Caption = 'Info Mapping Message Shown', Locked = true;
         }
+        field(16; "EOS Enable Log"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Enable Log';
+        }
     }
 
     keys

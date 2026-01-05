@@ -24,8 +24,8 @@
           <target>Scegli una funzione da eseguire</target>
         </trans-unit>
         <trans-unit id="Codeunit 583858742 - Method 2651863686 - NamedType 1196336482" translate="yes" size-unit="char" xml:space="preserve">
-          <source>Delete Environment,Get Environment Status,Copy Environment,Cancel</source>
-          <target>Cancella ambiente,Ottieni stato ambiente,Copia ambiente,Annulla</target>
+          <source>Delete Environment,Get Environment Status,Copy Environment</source>
+          <target>Cancella ambiente,Ottieni stato ambiente,Copia ambiente</target>
         </trans-unit>
         <trans-unit id="Codeunit 583858742 - Method 2651863686 - NamedType 1753513791" translate="yes" size-unit="char" xml:space="preserve">
           <source>Operation Completed. Check the status of the environment in the admincenter or use the function Get Environment Status</source>
@@ -574,6 +574,18 @@
         <trans-unit id="Page 471369648 - Action 3218354727 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
           <source>Gets a new token from the Admin Center API using the provided Client Id and Secret Id.</source>
           <target>Ottieni un nuovo token dall'API dell'admin center utilizzando il Client Id e il Secret Id specificati</target>
+        </trans-unit>
+        <trans-unit id="Table 471369648 - Field 164543344 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Enable Log</source>
+          <target>Abilita log</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 849829406 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Session Id</source>
+          <target>Id sessione</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 2495245895 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>User Id</source>
+          <target>Id utente</target>
         </trans-unit>
       </group>
     </body>
