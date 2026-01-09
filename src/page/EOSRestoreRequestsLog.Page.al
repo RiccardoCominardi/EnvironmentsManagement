@@ -83,6 +83,7 @@ page 70006 "EOS Restore Requests Log"
                     trigger OnDrillDown()
                     begin
                         Message(Rec.GetBlobFields(Rec.FieldNo("EOS Operation Full Details")));
+                        CurrPage.Update();
                     end;
                 }
             }
