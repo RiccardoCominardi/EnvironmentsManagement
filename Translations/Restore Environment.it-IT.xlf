@@ -587,6 +587,138 @@
           <source>User Id</source>
           <target>Id utente</target>
         </trans-unit>
+        <trans-unit id="Codeunit 583858742 - Method 2465236017 - NamedType 1327832897" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Operation completed</source>
+          <target>Operazione completata</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Control 164543344 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Indicates whether logging is enabled for the restore environment process.</source>
+          <target>Indica se è attivo il log per tracciare le nuove richieste</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 507445954 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Opens the log of the restore requests mades.</source>
+          <target>Apri il log delle operazioni eseguite</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 507445954 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Requests Log</source>
+          <target>Log richieste</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 917192146 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Execute Restore</source>
+          <target>Esegui ripristino</target>
+        </trans-unit>
+        <trans-unit id="Page 471369648 - Action 474418915 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Job Queue Entry</source>
+          <target>Coda processi</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Restore Requests Log (ENV)</source>
+          <target>Log richieste (ENV)</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 1989356158 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the Entry No. of the request.</source>
+          <target>Indica il nr. movimento della richiesta</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 4081827536 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the Environment where the request has been made.</source>
+          <target>Indica il nome dell'ambiente su cui è stata eseguita la richiesta</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 1270490780 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the Operation Completed On date present in the Admin Center.</source>
+          <target>Indica la data-ora del completamento dell'operazione. La stessa informazione è presente anche sull'Admin Center</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 189973746 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the Operation Details present in the Admin Center.</source>
+          <target>Indica il dettaglio dell'operazione. La stessa informazione è presente anche sull'Admin Center</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 12707811 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the Operation Id present in the Admin Center.</source>
+          <target>Indica l'id dell'operazione. La stessa informazione è presente anche sull'Admin Center</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 429441608 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the Operation Scheduled On date present in the Admin Center.</source>
+          <target>Indica la data-ora in cui è stata schedulata l'operazione. La stessa informazione è presente anche sull'Admin Center</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 278235712 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the Operation Started On date present in the Admin Center.</source>
+          <target>Indica la data-ora in cui è iniziata l'esecuzione dell'operazione. La stessa informazione è presente anche sull'Admin Center</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 1480149796 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the Operation Status present in the Admin Center.</source>
+          <target>Indica lo stato di esecuzione dell'operazione. La stessa informazione è presente anche sull'Admin Center</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 849829406 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the Session Id associated with the request.</source>
+          <target>Indica l'id della sessione che ha eseguito la richiesta</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 2495245895 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies the User Id who made the request.</source>
+          <target>Indica l'id utente che ha eseguito la richiesta</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2421935703 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Update Status</source>
+          <target>Aggiorna stati</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Restore Requests Log (ENV)</source>
+          <target>Log richieste (ENV)</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 1989356158 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Entry No.</source>
+          <target>Nr. movimento</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 4081827536 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Environment</source>
+          <target>Ambiente</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 1270490780 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Operation Completed On</source>
+          <target>Operazione - Data/ora completamento</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 12707811 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Operation Id</source>
+          <target>Operazione - Id</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 189973746 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Operation Details</source>
+          <target>Operazione - Dettagli</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 429441608 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Operation Scheduled On</source>
+          <target>Operazione - Data/ora schedulazione</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 278235712 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Operation Started On</source>
+          <target>Operazione - Data/ora inizio</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 1480149796 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Operation Status</source>
+          <target>Operazione - Stato</target>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 3456033531 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Type</source>
+          <target>Tipo</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 3456033531 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Specifies Request Type that has been requested.</source>
+          <target>Indica il tipo di richiesta che è stata effettuata</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2801303636 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Manually set the selected log entry as Skipped. The status will not be updated any further.</source>
+          <target>Imposta manualmente il log come skippato. Lo stato non verrà aggiornato ulteriormente.</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2801303636 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Set As Skipped</source>
+          <target>Imposta skippato</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2801303636 - Method 1377591017 - NamedType 1327832897" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Manually Skipped</source>
+          <target>Skippato manualmente</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 3790726368 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Open the Admin Center</source>
+          <target>Apri l'Admin Center</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -1,0 +1,64 @@
+.eos-copy-toast {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 2147483647 !important;
+    pointer-events: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', 'Arial', sans-serif !important;
+    animation: eos-toast-fadein 0.25s ease-out !important;
+}
+
+@keyframes eos-toast-fadein {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.eos-toast-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    background: rgba(45, 45, 45, 0.95) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    color: #FFFFFF !important;
+    padding: 12px 20px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 0 0 0.5px rgba(255, 255, 255, 0.1) inset !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.2px !important;
+}
+
+.eos-toast-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 24px !important;
+    height: 24px !important;
+    background: #30D158 !important;
+    border: none !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+}
+
+.eos-toast-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+    color: #FFFFFF !important;
+    stroke-width: 2.5 !important;
+}
+
+.eos-toast-text {
+    color: #FFFFFF !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.2px !important;
+    white-space: nowrap !important;
+}

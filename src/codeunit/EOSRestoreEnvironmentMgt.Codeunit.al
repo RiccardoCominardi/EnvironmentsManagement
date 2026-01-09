@@ -230,7 +230,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
             if Response.Content.ReadAs(ResponseText) then
                 Error(ResponseText);
 
-        InsertLogRecord(Response, 0);
+        InsertLogRecord(Response);
     end;
 
     local procedure CopyEnvironment()
@@ -277,7 +277,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
             if Response.Content.ReadAs(ResponseText) then
                 Error(ResponseText);
 
-        InsertLogRecord(Response, 1);
+        InsertLogRecord(Response);
     end;
 
     procedure GetEnvironmentInfo() Status: Enum "EOS Environment Status"
@@ -361,14 +361,15 @@ codeunit 70000 "EOS Restore Environment Mgt"
         OutStr.WriteText(JsonBody);
     end;
 
-    procedure GetOperationDetails(OperationId: Text) Response: HttpResponseMessage;
+    procedure GetOperationDetails(RequestType: Text; OperationId: Text; RaiseError: Boolean) Response: HttpResponseMessage;
     var
         Headers: HttpHeaders;
         Client: HttpClient;
         Content: HttpContent;
         Request: HttpRequestMessage;
         HttpMethod: Enum "Http Method";
-        UriLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.7/applications/BusinessCentral/environments/operation/%1', Locked = true;
+        UriEnvLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.9/applications/BusinessCentral/environments/%1/operations/%2', Locked = true;
+    //UriLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.9/environments/operations', Locked = true;
     begin
         //CheckEnvironment();
         CheckSetup();
@@ -384,11 +385,17 @@ codeunit 70000 "EOS Restore Environment Mgt"
 
         //Set Request
         Request.Method := Format(HttpMethod::GET);
-        Request.SetRequestUri(StrSubstNo(UriLbl, OperationId));
+        case RequestType of
+            'copy':
+                Request.SetRequestUri(StrSubstNo(UriEnvLbl, RestEnv."EOS Prod. Environment Name", OperationId));
+            else
+                exit;
+        end;
         Request.Content(Content);
 
         if not Client.Send(Request, Response) then
-            Error(GetLastErrorText());
+            if RaiseError then
+                Error(GetLastErrorText());
     end;
 
     procedure UpdateLogRecords()
@@ -397,17 +404,24 @@ codeunit 70000 "EOS Restore Environment Mgt"
         Response: HttpResponseMessage;
     begin
         RestRequestsLog.Reset();
-        RestRequestsLog.SetFilter("EOS Operation Status", '<>%1&<>%2', RestRequestsLog."EOS Operation Status"::Running, RestRequestsLog."EOS Operation Status"::Failed);
+        RestRequestsLog.SetFilter("EOS Operation Status", '<>%1&<>%2', RestRequestsLog."EOS Operation Status"::Succeeded, RestRequestsLog."EOS Operation Status"::Failed);
         if RestRequestsLog.FindSet() then
             repeat
-                Response := GetOperationDetails(RestRequestsLog."EOS Operation Id");
+                Response := GetOperationDetails(RestRequestsLog."EOS Type", RestRequestsLog."EOS Operation Id", false);
                 RestRequestsLog2.Get(RestRequestsLog."EOS Entry No.");
                 SetLogFields(RestRequestsLog2, Response);
                 RestRequestsLog2.Modify();
             until RestRequestsLog.Next() = 0;
     end;
 
-    local procedure InsertLogRecord(Response: HttpResponseMessage; RequestType: Option "Delete Environment","Copy Environment")
+    procedure UpdateLogStatus(RestRequestsLog: Record "EOS Restore Requests Log"; NewStatus: Enum "EOS Operation Status"; MessageText: Text[2048])
+    begin
+        RestRequestsLog."EOS Operation Status" := NewStatus;
+        RestRequestsLog."EOS Operation Details" := MessageText;
+        RestRequestsLog.Modify();
+    end;
+
+    local procedure InsertLogRecord(Response: HttpResponseMessage)
     var
         RestRequestsLog: Record "EOS Restore Requests Log";
     begin
@@ -419,8 +433,6 @@ codeunit 70000 "EOS Restore Environment Mgt"
         RestRequestsLog."EOS Entry No." := RestRequestsLog.GetNextEntryNo();
         RestRequestsLog."EOS Session Id" := SessionId();
         RestRequestsLog."EOS User Id" := CopyStr(UserId(), 1, MaxStrLen(RestRequestsLog."EOS User Id"));
-        RestRequestsLog."EOS Request Type" := RequestType;
-        RestRequestsLog."EOS Environment" := RestEnv."EOS New Environment Name";
         SetLogFields(RestRequestsLog, Response);
         RestRequestsLog.Insert();
     end;
@@ -430,19 +442,27 @@ codeunit 70000 "EOS Restore Environment Mgt"
         Property, ResponseText : Text;
         JObject: JsonObject;
         JToken: JsonToken;
-        Text000Lbl: Label 'Operation successfully completed.';
+        Text000Lbl: Label 'Operation completed';
     begin
         Response.Content.ReadAs(ResponseText);
+        if ResponseText = '' then
+            exit;
+
         JObject.ReadFrom(ResponseText);
         foreach Property in JObject.Keys() do begin
             JObject.Get(Property, JToken);
             case Property of
                 'id':
-                    Evaluate(RestRequestsLog."EOS Operation Id", JToken.AsValue().AsText());
+                    if IsNullGuid(RestRequestsLog."EOS Operation Id") then
+                        Evaluate(RestRequestsLog."EOS Operation Id", JToken.AsValue().AsText());
+                'type':
+                    RestRequestsLog."EOS Type" := CopyStr(JToken.AsValue().AsText(), 1, MaxStrLen(RestRequestsLog."EOS Type"));
                 'status':
                     case JToken.AsValue().AsText() of
                         'scheduled':
                             RestRequestsLog."EOS Operation Status" := RestRequestsLog."EOS Operation Status"::Scheduled;
+                        'running':
+                            RestRequestsLog."EOS Operation Status" := RestRequestsLog."EOS Operation Status"::Running;
                         'succeeded':
                             begin
                                 RestRequestsLog."EOS Operation Status" := RestRequestsLog."EOS Operation Status"::Succeeded;
@@ -462,7 +482,16 @@ codeunit 70000 "EOS Restore Environment Mgt"
                         RestRequestsLog."EOS Operation Details" := CopyStr(JToken.AsValue().AsText(), 1, MaxStrLen(RestRequestsLog."EOS Operation Details"));
                         RestRequestsLog.SetBlobFields(RestRequestsLog.FieldNo("EOS Operation Full Details"), JToken.AsValue().AsText());
                     end;
+                'environmentName':
+                    RestRequestsLog."EOS Environment" := CopyStr(JToken.AsValue().AsText(), 1, MaxStrLen(RestRequestsLog."EOS Environment"));
             end;
+        end;
+
+        //Added beacause Admin Center api did not return the softDeleted operation. So we can't track it properly
+        if RestRequestsLog."EOS Type" = 'softDelete' then begin
+            RestRequestsLog."EOS Operation Status" := RestRequestsLog."EOS Operation Status"::Succeeded;
+            RestRequestsLog."EOS Operation Started On" := RestRequestsLog."EOS Operation Scheduled On";
+            RestRequestsLog."EOS Operation Completed On" := RestRequestsLog."EOS Operation Scheduled On";
         end;
     end;
 

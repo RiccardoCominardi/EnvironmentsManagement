@@ -1,6 +1,6 @@
 page 70006 "EOS Restore Requests Log"
 {
-    Caption = 'Restore Requests Log (WSC)';
+    Caption = 'Restore Requests Log (ENV)';
     PageType = List;
     UsageCategory = None;
     SourceTable = "EOS Restore Requests Log";
@@ -14,7 +14,7 @@ page 70006 "EOS Restore Requests Log"
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(Control1)
             {
                 field("EOS Entry No."; Rec."EOS Entry No.")
                 {
@@ -31,7 +31,7 @@ page 70006 "EOS Restore Requests Log"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the User Id who made the request.';
                 }
-                field("EOS Request Type"; Rec."EOS Request Type")
+                field("EOS Type"; Rec."EOS Type")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies Request Type that has been requested.';
@@ -40,6 +40,16 @@ page 70006 "EOS Restore Requests Log"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the Environment where the request has been made.';
+                }
+                field("EOS Operation Id"; Rec."EOS Operation Id")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the Operation Id present in the Admin Center.';
+                    StyleExpr = FieldColor;
+                    trigger OnDrillDown()
+                    begin
+                        CopyText(Rec."EOS Operation Id".ToText().TrimStart('{').TrimEnd('}'));
+                    end;
                 }
                 field("EOS Operation Status"; Rec."EOS Operation Status")
                 {
@@ -70,6 +80,27 @@ page 70006 "EOS Restore Requests Log"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the Operation Details present in the Admin Center.';
                     StyleExpr = FieldColor;
+                    trigger OnDrillDown()
+                    begin
+                        Message(Rec.GetBlobFields(Rec.FieldNo("EOS Operation Full Details")));
+                    end;
+                }
+            }
+            group(Control)
+            {
+                ShowCaption = false;
+                usercontrol(CopyToClipboard; "EOS Copy To Clipboard")
+                {
+                    ApplicationArea = All;
+                    trigger OnControlReady()
+                    begin
+                        IsControlReady := true;
+                    end;
+
+                    trigger OnCopyCompleted()
+                    begin
+                        // Optional: Handle copy completed event if needed
+                    end;
                 }
             }
         }
@@ -77,6 +108,23 @@ page 70006 "EOS Restore Requests Log"
 
     actions
     {
+        area(Navigation)
+        {
+            action(AdminCenter)
+            {
+                ApplicationArea = All;
+                Caption = 'Admin Center', Locked = true;
+                ToolTip = 'Open the Admin Center';
+                Image = Administration;
+                trigger OnAction()
+                var
+                    AzureADTenant: Codeunit "Azure AD Tenant";
+                    Text000Lbl: Label 'https://businesscentral.dynamics.com/%1/admin', Locked = true;
+                begin
+                    Hyperlink(StrSubstNo(Text000Lbl, AzureADTenant.GetAadTenantId()));
+                end;
+            }
+        }
         area(Processing)
         {
             action(UpdateStatus)
@@ -89,22 +137,25 @@ page 70006 "EOS Restore Requests Log"
                     RestEnvMgt.UpdateLogRecords();
                 end;
             }
-            action(ShowFullMessage)
+            action(SetAsSkipped)
             {
                 ApplicationArea = All;
-                Caption = 'Show Full Message';
-                Image = Text;
-
+                Caption = 'Set As Skipped';
+                ToolTip = 'Manually set the selected log entry as Skipped. The status will not be updated any further.';
+                Image = ChangeStatus;
                 trigger OnAction()
+                var
+                    Text000Lbl: Label 'Manually Skipped';
                 begin
-                    Message(Rec.GetBlobFields(Rec.FieldNo("EOS Operation Full Details")));
+                    RestEnvMgt.UpdateLogStatus(Rec, Rec."EOS Operation Status"::Skipped, Text000Lbl);
                 end;
             }
         }
         area(Promoted)
         {
+            actionref(AdminCenter_Promoted; AdminCenter) { }
             actionref(UpdateStatus_Promoted; UpdateStatus) { }
-            actionref(ShowFullMessage_Promoted; ShowFullMessage) { }
+            actionref(SetAsSkipped_Promoted; SetAsSkipped) { }
         }
     }
 
@@ -123,6 +174,10 @@ page 70006 "EOS Restore Requests Log"
         FieldColor := Format(PageStyle::Standard);
 
         case Rec."EOS Operation Status" of
+            Rec."EOS Operation Status"::Running:
+                FieldColor := Format(PageStyle::Ambiguous);
+            Rec."EOS Operation Status"::Skipped:
+                FieldColor := Format(PageStyle::AttentionAccent);
             Rec."EOS Operation Status"::Succeeded:
                 FieldColor := Format(PageStyle::Favorable);
             Rec."EOS Operation Status"::Failed:
@@ -130,8 +185,14 @@ page 70006 "EOS Restore Requests Log"
         end;
     end;
 
+    procedure CopyText(TextToCopy: Text)
+    begin
+        if IsControlReady then
+            CurrPage.CopyToClipboard.CopyToClipboard(TextToCopy);
+    end;
+
     var
         RestEnvMgt: Codeunit "EOS Restore Environment Mgt";
         FieldColor: Text;
-
+        IsControlReady: Boolean;
 }

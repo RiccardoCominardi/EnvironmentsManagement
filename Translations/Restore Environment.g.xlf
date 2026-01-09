@@ -153,20 +153,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Requests Log - Field EOS Operation Status - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1790613321 - Field 477594852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>EOS Request Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Requests Log - Field EOS Request Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1790613321 - Field 477594852 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delete Environment,Copy Environment</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Requests Log - Field EOS Request Type - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 1790613321 - Field 849829406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Session Id</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Requests Log - Field EOS Session Id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1790613321 - Field 3456033531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table EOS Restore Requests Log - Field EOS Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1790613321 - Field 2495245895 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>User Id</source>
@@ -299,7 +294,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method RestoreEnvironment - NamedType Text002Lbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 583858742 - Method 2465236017 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Operation successfully completed.</source>
+          <source>Operation completed</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit EOS Restore Environment Mgt - Method SetLogFields - NamedType Text000Lbl</note>
         </trans-unit>
@@ -564,7 +559,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Option Picker - Control Name - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1790613321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Restore Requests Log (WSC)</source>
+          <source>Restore Requests Log (ENV)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Property Caption</note>
         </trans-unit>
@@ -588,6 +583,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Control EOS Operation Details - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 12707811 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Operation Id present in the Admin Center.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Control EOS Operation Id - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 1790613321 - Control 429441608 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Operation Scheduled On date present in the Admin Center.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -603,25 +603,45 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Control EOS Operation Status - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 1790613321 - Control 477594852 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies Request Type that has been requested.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Control EOS Request Type - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 1790613321 - Control 849829406 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Session Id associated with the request.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Control EOS Session Id - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Control 3456033531 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies Request Type that has been requested.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Control EOS Type - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1790613321 - Control 2495245895 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the User Id who made the request.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Control EOS User Id - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 1790613321 - Action 915331685 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show Full Message</source>
+        <trans-unit id="Page 1790613321 - Action 3790726368 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the Admin Center</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Action ShowFullMessage - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Action AdminCenter - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2801303636 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Manually set the selected log entry as Skipped. The status will not be updated any further.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Action SetAsSkipped - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2801303636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set As Skipped</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Action SetAsSkipped - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2801303636 - Method 1377591017 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Manually Skipped</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Action SetAsSkipped - Method OnAction - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2421935703 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Action UpdateStatus - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2722868633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table Mapping (ENV)</source>

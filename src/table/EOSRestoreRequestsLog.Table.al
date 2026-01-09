@@ -21,11 +21,10 @@ table 70003 "EOS Restore Requests Log"
             DataClassification = CustomerContent;
             Caption = 'User Id';
         }
-        field(4; "EOS Request Type"; Option)
+        field(4; "EOS Type"; Text[30])
         {
             DataClassification = CustomerContent;
-            OptionMembers = "Delete Environment","Copy Environment";
-            OptionCaption = 'Delete Environment,Copy Environment';
+            Caption = 'Type';
         }
         field(5; "EOS Environment"; Text[50])
         {
@@ -57,7 +56,7 @@ table 70003 "EOS Restore Requests Log"
             DataClassification = CustomerContent;
             Caption = 'Operation Completed On';
         }
-        field(11; "EOS Operation Details"; Text[1024])
+        field(11; "EOS Operation Details"; Text[2048])
         {
             DataClassification = CustomerContent;
             Caption = 'Operation Details';
