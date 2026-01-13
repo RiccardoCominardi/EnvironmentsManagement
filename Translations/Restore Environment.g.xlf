@@ -623,6 +623,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Action AdminCenter - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2575830391 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy the Operation Id to clipboard</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Action CopyOperationId - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2575830391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy Operation Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page EOS Restore Requests Log - Action CopyOperationId - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1790613321 - Action 2801303636 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manually set the selected log entry as Skipped. The status will not be updated any further.</source>
           <note from="Developer" annotates="general" priority="2"></note>

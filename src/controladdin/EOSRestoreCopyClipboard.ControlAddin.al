@@ -1,4 +1,4 @@
-controladdin "EOS Copy To Clipboard"
+controladdin "EOS Restore Copy Clipboard"
 {
     RequestedHeight = 0;
     RequestedWidth = 0;
@@ -11,12 +11,11 @@ controladdin "EOS Copy To Clipboard"
     VerticalShrink = true;
     HorizontalShrink = true;
 
-    Scripts = 'src/controladdin/scripts/EOSCopyToClipboard.js';
-    StyleSheets = 'src/controladdin/styles/EOSCopyToClipboard.css';
-    StartupScript = 'src/controladdin/scripts/EOSCopyToClipboardStartup.js';
+    Scripts = 'src/controladdin/scripts/EOSRestoreCopyClipboard.js';
+    StyleSheets = 'src/controladdin/styles/EOSRestoreCopyClipboard.css';
+    StartupScript = 'src/controladdin/scripts/EOSRestoreCopyClipboardStartup.js';
 
     event OnControlReady();
     event OnCopyCompleted();
-
     procedure CopyToClipboard(TextToCopy: Text);
 }

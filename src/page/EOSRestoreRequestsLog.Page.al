@@ -90,7 +90,7 @@ page 70006 "EOS Restore Requests Log"
             group(Control)
             {
                 ShowCaption = false;
-                usercontrol(CopyToClipboard; "EOS Copy To Clipboard")
+                usercontrol(CopyClipboard; "EOS Restore Copy Clipboard")
                 {
                     ApplicationArea = All;
                     trigger OnControlReady()
@@ -125,6 +125,17 @@ page 70006 "EOS Restore Requests Log"
                     Hyperlink(StrSubstNo(Text000Lbl, AzureADTenant.GetAadTenantId()));
                 end;
             }
+            action(CopyOperationId)
+            {
+                ApplicationArea = All;
+                Caption = 'Copy Operation Id';
+                ToolTip = 'Copy the Operation Id to clipboard';
+                Image = Copy;
+                trigger OnAction()
+                begin
+                    CopyText(Rec."EOS Operation Id".ToText().TrimStart('{').TrimEnd('}'));
+                end;
+            }
         }
         area(Processing)
         {
@@ -154,7 +165,13 @@ page 70006 "EOS Restore Requests Log"
         }
         area(Promoted)
         {
-            actionref(AdminCenter_Promoted; AdminCenter) { }
+            group(AdminCenterGroup)
+            {
+                Caption = 'Admin Center', Locked = true;
+                ShowAs = SplitButton;
+                actionref(AdminCenter_Promoted; AdminCenter) { }
+                actionref(CopyOperationId_Promoted; CopyOperationId) { }
+            }
             actionref(UpdateStatus_Promoted; UpdateStatus) { }
             actionref(SetAsSkipped_Promoted; SetAsSkipped) { }
         }
@@ -189,7 +206,7 @@ page 70006 "EOS Restore Requests Log"
     procedure CopyText(TextToCopy: Text)
     begin
         if IsControlReady then
-            CurrPage.CopyToClipboard.CopyToClipboard(TextToCopy);
+            CurrPage.CopyClipboard.CopyToClipboard(TextToCopy);
     end;
 
     var

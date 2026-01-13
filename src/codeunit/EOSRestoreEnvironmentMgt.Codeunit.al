@@ -467,6 +467,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
                             begin
                                 RestRequestsLog."EOS Operation Status" := RestRequestsLog."EOS Operation Status"::Succeeded;
                                 RestRequestsLog."EOS Operation Details" := Text000Lbl;
+                                RestRequestsLog.SetBlobFields(RestRequestsLog.FieldNo("EOS Operation Full Details"), Text000Lbl);
                             end;
                         'failed':
                             RestRequestsLog."EOS Operation Status" := RestRequestsLog."EOS Operation Status"::Failed;

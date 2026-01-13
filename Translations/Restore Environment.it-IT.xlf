@@ -719,6 +719,14 @@
           <source>Open the Admin Center</source>
           <target>Apri l'Admin Center</target>
         </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2575830391 - Property 2879900210" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Copy Operation Id</source>
+          <target>Copia Id operazione</target>
+        </trans-unit>
+        <trans-unit id="Page 1790613321 - Action 2575830391 - Property 1295455071" translate="yes" size-unit="char" xml:space="preserve">
+          <source>Copy the Operation Id to clipboard</source>
+          <target>Copia Id operazione nella clipboard</target>
+        </trans-unit>
       </group>
     </body>
   </file>
