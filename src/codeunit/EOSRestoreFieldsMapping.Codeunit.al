@@ -352,9 +352,8 @@ codeunit 70002 "EOS Restore Fields Mapping"
         end;
     end;
 
-    local procedure InsertExcelLineDelete(RestoreTableMapping: Record "EOS Restore Table Mapping"; var TempExcelBuffer: Record "Excel Buffer" temporary)
+    local procedure InsertExcelMappingColumns(RestoreTableMapping: Record "EOS Restore Table Mapping"; var TempExcelBuffer: Record "Excel Buffer" temporary)
     begin
-        TempExcelBuffer.NewRow();
         TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Code", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Description", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Source Type".AsInteger(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
@@ -364,6 +363,12 @@ codeunit 70002 "EOS Restore Fields Mapping"
         TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Table Name", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn(RestoreTableMapping.GetTableFilter(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Enabled", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+    end;
+
+    local procedure InsertExcelLineDelete(RestoreTableMapping: Record "EOS Restore Table Mapping"; var TempExcelBuffer: Record "Excel Buffer" temporary)
+    begin
+        TempExcelBuffer.NewRow();
+        InsertExcelMappingColumns(RestoreTableMapping, TempExcelBuffer);
         TempExcelBuffer.AddColumn('', false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn('', false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn('', false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
@@ -383,15 +388,7 @@ codeunit 70002 "EOS Restore Fields Mapping"
         RestoreFieldMapping.FindSet();
         repeat
             TempExcelBuffer.NewRow();
-            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Code", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Description", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Source Type".AsInteger(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Source No.", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Type".AsInteger(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Table No.", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Table Name", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-            TempExcelBuffer.AddColumn(RestoreTableMapping.GetTableFilter(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
-            TempExcelBuffer.AddColumn(RestoreTableMapping."EOS Enabled", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+            InsertExcelMappingColumns(RestoreTableMapping, TempExcelBuffer);
             TempExcelBuffer.AddColumn(RestoreFieldMapping."EOS Field No.", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
             TempExcelBuffer.AddColumn(RestoreFieldMapping."EOS Field Name", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
             TempExcelBuffer.AddColumn(RestoreFieldMapping."EOS Replace Type".AsInteger(), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);

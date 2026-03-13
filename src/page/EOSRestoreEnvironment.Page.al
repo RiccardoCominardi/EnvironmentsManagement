@@ -275,27 +275,13 @@ page 70000 "EOS Restore Environment"
     begin
         TokenColor := Format(PageStyle::Standard);
         TokenStatus := Text000Lbl;
-        if IsExpiredToken(Rec."EOS Token Authorization Time", Rec."EOS Token Expires In") then begin
+        if RestEnvMgt.IsTokenExpired(Rec."EOS Token Authorization Time", Rec."EOS Token Expires In") then begin
             TokenStatus := Text001Lbl;
             TokenColor := Format(PageStyle::Unfavorable);
         end else begin
             TokenStatus := Text002Lbl;
             TokenColor := Format(PageStyle::Favorable);
         end;
-    end;
-
-    local procedure IsExpiredToken(ParTokenAuth: DateTime; ParExpireIn: Integer): Boolean
-    var
-        ElapsedSecs: Integer;
-    begin
-        if ParTokenAuth = 0DT then
-            exit(true);
-
-        ElapsedSecs := Round((CurrentDateTime() - ParTokenAuth) / 1000, 1, '>');
-        if (ElapsedSecs < ParExpireIn) and (ElapsedSecs < 3600) then
-            exit(false)
-        else
-            exit(true);
     end;
 
     var

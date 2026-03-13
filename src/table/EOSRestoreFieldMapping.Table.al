@@ -134,28 +134,6 @@ table 70002 "EOS Restore Field Mapping"
             Rec."EOS Replace Value" := Format(FldRef.Value);
     end;
 
-    procedure LookupObjectID(var NewObjectID: Integer; ObjType: option ,,,"Report",,"Codeunit"; ObjectId: Integer): Boolean
-    var
-        AllObjWithCaption: Record AllObjWithCaption;
-        Objects: Page Objects;
-    begin
-        if AllObjWithCaption.Get(ObjType, ObjectId) then;
-
-        AllObjWithCaption.FilterGroup(2);
-        AllObjWithCaption.SetRange("Object Type", ObjType);
-        AllObjWithCaption.FilterGroup(0);
-        Objects.SetRecord(AllObjWithCaption);
-        Objects.SetTableView(AllObjWithCaption);
-        Objects.LookupMode := true;
-        if Objects.RunModal() = Action::LookupOK then begin
-            Objects.GetRecord(AllObjWithCaption);
-            NewObjectID := AllObjWithCaption."Object ID";
-            exit(true);
-        end;
-
-        exit(false);
-    end;
-
     procedure LookupFieldsID(var NewFieldNo: Integer; TableNo: Integer; FieldNo: Integer): Boolean
     var
         Field: Record Field;

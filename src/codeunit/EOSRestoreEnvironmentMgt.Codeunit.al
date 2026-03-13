@@ -15,53 +15,26 @@ codeunit 70000 "EOS Restore Environment Mgt"
     procedure GetToken(ForceNew: Boolean): SecretText
     var
         AzureADTenant: Codeunit "Azure AD Tenant";
-        Headers: HttpHeaders;
-        Client: HttpClient;
         Content: HttpContent;
-        Request: HttpRequestMessage;
         Response: HttpResponseMessage;
-        ResponseText: Text;
-        HttpMethod: Enum "Http Method";
+        ContentTypes: List of [Text];
         ContentTypeLbl: Label 'application/x-www-form-urlencoded', Locked = true;
         UriLbl: Label 'https://login.microsoftonline.com/%1/oauth2/v2.0/token', Locked = true;
-    //Test. Used for testing with a specific tenant
-    //TestLbl: Label 'https://login.microsoftonline.com/1f976128-8bbe-4ad7-a713-cbf76c27a7e0/oauth2/v2.0/token', Locked = true;
+    //TestTenantIdLbl: Label 'Insert your Tenant Id', Locked = true;
     begin
         CheckEnvironment();
         CheckSetupForToken();
 
         if not ForceNew then
-            if HasValidToken() then
+            if not IsTokenExpired() then
                 exit(GetExistingToken());
 
-        //Authentication
-        Headers := Client.DefaultRequestHeaders();
-
-        //Init Headers
-        Content.GetHeaders(Headers);
-
-        //Set Body
         Content.WriteFrom(CreateBodyContentForToken());
+        ContentTypes.Add(ContentTypeLbl);
 
-        //Set Headers
-        Headers.Clear();
-        if Headers.Contains('Content-Type') then
-            Headers.Remove('Content-Type');
-        Headers.Add('Content-Type', ContentTypeLbl);
-
-        //Set Request
-        Request.Method := Format(HttpMethod::GET);
-        Request.SetRequestUri(StrSubstNo(UriLbl, AzureADTenant.GetAadTenantId()));
-        //Test. Used this for testing with a specific tenant
-        //Request.SetRequestUri(TestLbl);
-        Request.Content(Content);
-
-        if not Client.Send(Request, Response) then
-            Error(GetLastErrorText());
-
-        if not (Response.HttpStatusCode in [200, 201, 202]) then
-            if Response.Content.ReadAs(ResponseText) then
-                Error(ResponseText);
+        //Test: to use a hardcoded tenant, change the line below to use TestTenantIdLbl instead of AzureADTenant.GetAadTenantId()
+        SendApiRequest(Enum::"Http Method"::POST, StrSubstNo(UriLbl, AzureADTenant.GetAadTenantId()), ContentTypes, Content, true, false, Response);
+        CheckResponseStatus(Response);
 
         UpdateTokenValue(Response);
         exit(GetExistingToken());
@@ -103,16 +76,20 @@ codeunit 70000 "EOS Restore Environment Mgt"
         RestEnv.Modify();
     end;
 
-    local procedure HasValidToken(): Boolean;
+    local procedure IsTokenExpired(): Boolean;
+    begin
+        exit(IsTokenExpired(RestEnv."EOS Token Authorization Time", RestEnv."EOS Token Expires In"));
+    end;
+
+    procedure IsTokenExpired(TokenAuthTime: DateTime; TokenExpiresIn: Integer): Boolean
     var
         ElapsedSecs: Integer;
     begin
-        if RestEnv."EOS Token Authorization Time" = 0DT then
-            exit;
-
-        ElapsedSecs := Round((CurrentDateTime() - RestEnv."EOS Token Authorization Time") / 1000, 1, '>');
-        if (ElapsedSecs < RestEnv."EOS Token Expires In") and (ElapsedSecs < 3600) then
+        if TokenAuthTime = 0DT then
             exit(true);
+
+        ElapsedSecs := Round((CurrentDateTime() - TokenAuthTime) / 1000, 1, '>');
+        exit(not ((ElapsedSecs < TokenExpiresIn) and (ElapsedSecs < 3600)));
     end;
 
     local procedure GetExistingToken() Token: SecretText
@@ -146,6 +123,52 @@ codeunit 70000 "EOS Restore Environment Mgt"
     end;
 
     #endregion TokenFunctions
+
+    #region HttpHelpers
+    internal procedure SendApiRequest(HttpMethodValue: Enum "Http Method"; RequestUri: Text; ContentTypes: List of [Text]; var RequestContent: HttpContent; RaiseError: Boolean; var Response: HttpResponseMessage)
+    begin
+        SendApiRequest(HttpMethodValue, RequestUri, ContentTypes, RequestContent, RaiseError, true, Response);
+    end;
+
+    internal procedure SendApiRequest(HttpMethodValue: Enum "Http Method"; RequestUri: Text; ContentTypes: List of [Text]; var RequestContent: HttpContent; RaiseError: Boolean; AddBearerAuth: Boolean; var Response: HttpResponseMessage)
+    var
+        Headers: HttpHeaders;
+        Client: HttpClient;
+        Request: HttpRequestMessage;
+        ContentType: Text;
+    begin
+        Headers := Client.DefaultRequestHeaders();
+        if AddBearerAuth then
+            Headers.Add('Authorization', SecretText.SecretStrSubstNo('Bearer %1', GetToken()));
+
+        RequestContent.GetHeaders(Headers);
+        if not AddBearerAuth then
+            Headers.Clear();
+
+        if Headers.Contains('Content-Type') then
+            Headers.Remove('Content-Type');
+
+        foreach ContentType in ContentTypes do
+            Headers.Add('Content-Type', ContentType);
+
+        Request.Method := Format(HttpMethodValue);
+        Request.SetRequestUri(RequestUri);
+        Request.Content(RequestContent);
+
+        if not Client.Send(Request, Response) then
+            if RaiseError then
+                Error(GetLastErrorText());
+    end;
+
+    internal procedure CheckResponseStatus(Response: HttpResponseMessage)
+    var
+        ResponseText: Text;
+    begin
+        if not (Response.HttpStatusCode in [200, 201, 202]) then
+            if Response.Content.ReadAs(ResponseText) then
+                Error(ResponseText);
+    end;
+    #endregion HttpHelpers
 
     procedure RestoreEnvironment()
     var
@@ -197,39 +220,16 @@ codeunit 70000 "EOS Restore Environment Mgt"
 
     local procedure DeleteEnvironment()
     var
-        Headers: HttpHeaders;
-        Client: HttpClient;
         Content: HttpContent;
-        Request: HttpRequestMessage;
         Response: HttpResponseMessage;
-        ResponseText: Text;
-        HttpMethod: Enum "Http Method";
+        ContentTypes: List of [Text];
         UriLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.21/applications/BusinessCentral/environments/%1', Locked = true;
     begin
         CheckEnvironment();
         CheckSetup();
 
-        //Authentication
-        Headers := Client.DefaultRequestHeaders();
-        Headers.Add('Authorization', SecretText.SecretStrSubstNo('Bearer %1', GetToken()));
-
-        //Set Headers
-        Content.GetHeaders(Headers);
-        if Headers.Contains('Content-Type') then
-            Headers.Remove('Content-Type');
-
-        //Set Request
-        Request.Method := Format(HttpMethod::DELETE);
-        Request.SetRequestUri(StrSubstNo(UriLbl, RestEnv."EOS New Environment Name"));
-        Request.Content(Content);
-
-        if not Client.Send(Request, Response) then
-            Error(GetLastErrorText());
-
-        if not (Response.HttpStatusCode in [200, 201, 202]) then
-            if Response.Content.ReadAs(ResponseText) then
-                Error(ResponseText);
-
+        SendApiRequest(Enum::"Http Method"::DELETE, StrSubstNo(UriLbl, RestEnv."EOS New Environment Name"), ContentTypes, Content, true, Response);
+        CheckResponseStatus(Response);
         InsertLogRecord(Response);
     end;
 
@@ -237,85 +237,38 @@ codeunit 70000 "EOS Restore Environment Mgt"
     var
         TempBlob: Codeunit "Temp Blob";
         InStr: InStream;
-        Headers: HttpHeaders;
-        Client: HttpClient;
         Content: HttpContent;
-        Request: HttpRequestMessage;
         Response: HttpResponseMessage;
-        HttpMethod: Enum "Http Method";
-        ResponseText: Text;
+        ContentTypes: List of [Text];
         ContentTypeLbl: Label 'application/json', Locked = true;
         UriLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.21/applications/BusinessCentral/environments/%1/copy', Locked = true;
     begin
         CheckEnvironment();
         CheckSetup();
 
-        //Authentication
-        Headers := Client.DefaultRequestHeaders();
-        Headers.Add('Authorization', SecretText.SecretStrSubstNo('Bearer %1', GetToken()));
-
-        //Set Headers
-        Content.GetHeaders(Headers);
-        if Headers.Contains('Content-Type') then
-            Headers.Remove('Content-Type');
-        Headers.Add('Content-Type', ContentTypeLbl);
-
-        //Set Body
         WriteCopyEnvironmentBody(TempBlob);
         TempBlob.CreateInStream(InStr);
         Content.WriteFrom(InStr);
 
-        //Set Request
-        Request.Method := Format(HttpMethod::POST);
-        Request.SetRequestUri(StrSubstNo(UriLbl, RestEnv."EOS Prod. Environment Name"));
-        Request.Content(Content);
-
-        if not Client.Send(Request, Response) then
-            Error(GetLastErrorText());
-
-        if not (Response.HttpStatusCode in [200, 201, 202]) then
-            if Response.Content.ReadAs(ResponseText) then
-                Error(ResponseText);
-
+        ContentTypes.Add(ContentTypeLbl);
+        SendApiRequest(Enum::"Http Method"::POST, StrSubstNo(UriLbl, RestEnv."EOS Prod. Environment Name"), ContentTypes, Content, true, Response);
+        CheckResponseStatus(Response);
         InsertLogRecord(Response);
     end;
 
     procedure GetEnvironmentInfo() Status: Enum "EOS Environment Status"
     var
-        Headers: HttpHeaders;
-        Client: HttpClient;
         Content: HttpContent;
-        Request: HttpRequestMessage;
         Response: HttpResponseMessage;
-        //ResponseText: Text;
-        HttpMethod: Enum "Http Method";
+        ContentTypes: List of [Text];
         UriLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.21/applications/BusinessCentral/environments/%1', Locked = true;
     begin
-        //CheckEnvironment();
+        CheckEnvironment();
         CheckSetup();
 
-        //Authentication
-        Headers := Client.DefaultRequestHeaders();
-        Headers.Add('Authorization', SecretText.SecretStrSubstNo('Bearer %1', GetToken()));
+        SendApiRequest(Enum::"Http Method"::GET, StrSubstNo(UriLbl, RestEnv."EOS New Environment Name"), ContentTypes, Content, true, Response);
 
-        //Set Headers
-        Content.GetHeaders(Headers);
-        if Headers.Contains('Content-Type') then
-            Headers.Remove('Content-Type');
-
-        //Set Request
-        Request.Method := Format(HttpMethod::GET);
-        Request.SetRequestUri(StrSubstNo(UriLbl, RestEnv."EOS New Environment Name"));
-        Request.Content(Content);
-
-        if not Client.Send(Request, Response) then
-            Error(GetLastErrorText());
-
-        //Error not to handle beacause 404 is possible and it means that the environment is not present
-        //if not (Response.HttpStatusCode in [200, 201, 202]) then
-        //    if Response.Content.ReadAs(ResponseText) then
-        //        Error(ResponseText);
-
+        //Error not to handle because 404 is possible and it means that the environment is not present
         Status := GetStatusFromResponse(Response);
     end;
 
@@ -363,39 +316,17 @@ codeunit 70000 "EOS Restore Environment Mgt"
 
     procedure GetOperationDetails(RequestType: Text; OperationId: Text; RaiseError: Boolean) Response: HttpResponseMessage;
     var
-        Headers: HttpHeaders;
-        Client: HttpClient;
         Content: HttpContent;
-        Request: HttpRequestMessage;
-        HttpMethod: Enum "Http Method";
+        ContentTypes: List of [Text];
         UriEnvLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.9/applications/BusinessCentral/environments/%1/operations/%2', Locked = true;
-    //UriLbl: Label 'https://api.businesscentral.dynamics.com/admin/v2.9/environments/operations', Locked = true;
     begin
-        //CheckEnvironment();
+        CheckEnvironment();
         CheckSetup();
 
-        //Authentication
-        Headers := Client.DefaultRequestHeaders();
-        Headers.Add('Authorization', SecretText.SecretStrSubstNo('Bearer %1', GetToken()));
-
-        //Set Headers
-        Content.GetHeaders(Headers);
-        if Headers.Contains('Content-Type') then
-            Headers.Remove('Content-Type');
-
-        //Set Request
-        Request.Method := Format(HttpMethod::GET);
         case RequestType of
             'copy':
-                Request.SetRequestUri(StrSubstNo(UriEnvLbl, RestEnv."EOS Prod. Environment Name", OperationId));
-            else
-                exit;
+                SendApiRequest(Enum::"Http Method"::GET, StrSubstNo(UriEnvLbl, RestEnv."EOS Prod. Environment Name", OperationId), ContentTypes, Content, RaiseError, Response);
         end;
-        Request.Content(Content);
-
-        if not Client.Send(Request, Response) then
-            if RaiseError then
-                Error(GetLastErrorText());
     end;
 
     procedure UpdateLogRecords()

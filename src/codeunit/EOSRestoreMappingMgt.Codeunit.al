@@ -32,50 +32,25 @@ codeunit 70003 "EOS Restore Mapping Mgt."
         RestEnvMgt: Codeunit "EOS Restore Environment Mgt";
         AzureADTenant: Codeunit "Azure AD Tenant";
         TempBlob: Codeunit "Temp Blob";
-        Headers: HttpHeaders;
-        Client: HttpClient;
         Content: HttpContent;
-        Request: HttpRequestMessage;
         Response: HttpResponseMessage;
-        HttpMethod: Enum "Http Method";
         InStr: InStream;
-        ResponseText: Text;
+        ContentTypes: List of [Text];
         ContentTypeLbl: Label 'application/json', Locked = true;
         UriLbl: Label 'https://api.businesscentral.dynamics.com/v2.0/%1/%2/api/eos/eosenv/v2.0/companies(%3)/alignTableMappings', Locked = true;
-    //Test. Used for testing with a specific tenant and company
-    //UriTestLbl: Label 'https://api.businesscentral.dynamics.com/v2.0/1f976128-8bbe-4ad7-a713-cbf76c27a7e0/%1/api/eos/eosenv/v2.0/companies(121e8c1c-5ae6-ee11-a203-6045bde98bac)/alignTableMappings', Locked = true;
+    //TestTenantIdLbl: Label '1f976128-8bbe-4ad7-a713-cbf76c27a7e0', Locked = true;
     begin
         RestEnv.Get();
         Company.Get(CompanyName());
 
-        //Authentication
-        Headers := Client.DefaultRequestHeaders();
-        Headers.Add('Authorization', SecretText.SecretStrSubstNo('Bearer %1', RestEnvMgt.GetToken()));
-
-        //Set Headers
-        Content.GetHeaders(Headers);
-        if Headers.Contains('Content-Type') then
-            Headers.Remove('Content-Type');
-        Headers.Add('Content-Type', ContentTypeLbl);
-
-        //Set Body
         CreateAlignJsonToSend(TempBlob, RestoreCode, true);
         TempBlob.CreateInStream(InStr);
         Content.WriteFrom(InStr);
 
-        //Set Request
-        Request.Method := Format(HttpMethod::POST);
-        Request.SetRequestUri(StrSubstNo(UriLbl, AzureADTenant.GetAadTenantId(), RestEnv."EOS New Environment Name", GetGuidAsText(Company.Id)));
-        //Test. Used this for testing with a specific tenant and company
-        //Request.SetRequestUri(StrSubstNo(UriTestLbl, RestEnv."EOS New Environment Name", GetGuidAsText(Company.Id)));
-        Request.Content(Content);
-
-        if not Client.Send(Request, Response) then
-            Error(GetLastErrorText());
-
-        if not (Response.HttpStatusCode in [200, 201, 202]) then
-            if Response.Content.ReadAs(ResponseText) then
-                Error(ResponseText);
+        ContentTypes.Add(ContentTypeLbl);
+        //Test: to use a hardcoded tenant, change the line below to use TestTenantIdLbl instead of AzureADTenant.GetAadTenantId()
+        RestEnvMgt.SendApiRequest(Enum::"Http Method"::POST, StrSubstNo(UriLbl, AzureADTenant.GetAadTenantId(), RestEnv."EOS New Environment Name", GetGuidAsText(Company.Id)), ContentTypes, Content, true, Response);
+        RestEnvMgt.CheckResponseStatus(Response);
 
         if not HideDialog then
             if GuiAllowed() then
