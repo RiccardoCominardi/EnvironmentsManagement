@@ -71,6 +71,7 @@ table 70003 "EOS Restore Requests Log"
     keys
     {
         key(Key1; "EOS Entry No.") { Clustered = true; }
+        key(Key2; "EOS Operation Status") { }
     }
 
     [InherentPermissions(PermissionObjectType::TableData, Database::"EOS Restore Requests Log", 'r')]

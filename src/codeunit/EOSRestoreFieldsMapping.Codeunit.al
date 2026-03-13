@@ -289,9 +289,6 @@ codeunit 70002 "EOS Restore Fields Mapping"
         FileNameLbl: Label 'Restore Mapping', Locked = true;
         SheetLbl: Label 'Mapping', Locked = true;
     begin
-        if not TempExcelBuffer.IsTemporary then
-            exit;
-
         InsertExcelHeader(TempExcelBuffer);
 
         //Download a file
@@ -308,9 +305,6 @@ codeunit 70002 "EOS Restore Fields Mapping"
         FileNameLbl: Label 'Restore Mapping', Locked = true;
         SheetLbl: Label 'Mapping', Locked = true;
     begin
-        if not TempExcelBuffer.IsTemporary then
-            exit;
-
         if RestoreTableMapping.IsEmpty() then
             exit;
 

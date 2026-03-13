@@ -106,9 +106,9 @@ table 70000 "EOS Restore Environment"
             TokenKey := CreateGuid();
 
         if EncryptionEnabled() then
-            IsolatedStorage.SetEncrypted(TokenKey, TokenValue, DataScope::Company)
+            IsolatedStorage.SetEncrypted(TokenKey, TokenValue, DataScope::Module)
         else
-            IsolatedStorage.Set(TokenKey, TokenValue, DataScope::Company);
+            IsolatedStorage.Set(TokenKey, TokenValue, DataScope::Module);
     end;
 
     [NonDebuggable]
@@ -119,7 +119,7 @@ table 70000 "EOS Restore Environment"
         if NewToken then
             TokenKey := CreateGuid();
 
-        IsolatedStorage.Set(TokenKey, TokenValue, DataScope::Company);
+        IsolatedStorage.Set(TokenKey, TokenValue, DataScope::Module);
     end;
 
     [NonDebuggable]
@@ -128,7 +128,7 @@ table 70000 "EOS Restore Environment"
         if not HasToken(TokenKey) then
             exit(TokenValue);
 
-        IsolatedStorage.Get(TokenKey, DataScope::Company, TokenValue);
+        IsolatedStorage.Get(TokenKey, DataScope::Module, TokenValue);
     end;
 
     [NonDebuggable]
@@ -137,12 +137,12 @@ table 70000 "EOS Restore Environment"
         if not HasToken(TokenKey) then
             exit;
 
-        IsolatedStorage.Delete(TokenKey, DataScope::Company);
+        IsolatedStorage.Delete(TokenKey, DataScope::Module);
     end;
 
     [NonDebuggable]
     procedure HasToken(TokenKey: Guid): Boolean
     begin
-        exit(not IsNullGuid(TokenKey) and IsolatedStorage.Contains(TokenKey, DataScope::Company));
+        exit(not IsNullGuid(TokenKey) and IsolatedStorage.Contains(TokenKey, DataScope::Module));
     end;
 }

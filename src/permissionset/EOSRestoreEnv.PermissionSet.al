@@ -14,5 +14,11 @@ permissionset 70000 "EOS Restore Env."
         codeunit "EOS Restore Environment Mgt" = X,
         codeunit "EOS Restore Job Queue" = X,
         codeunit "EOS Restore Fields Mapping" = X,
-        codeunit "EOS Restore Mapping Mgt." = X;
+        codeunit "EOS Restore Mapping Mgt." = X,
+        page "EOS Restore Environment" = X,
+        page "EOS Restore Option Picker" = X,
+        page "EOS Restore Requests Log" = X,
+        page "EOS Restore Table Mapping Card" = X,
+        page "EOS Restore Table Mapping List" = X,
+        page "EOS Restore Table Mapping Sub" = X;
 }

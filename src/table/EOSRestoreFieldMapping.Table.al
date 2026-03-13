@@ -99,6 +99,7 @@ table 70002 "EOS Restore Field Mapping"
         RestFieldMapping.Reset();
         RestFieldMapping.SetRange("EOS Code", Rec."EOS Code");
         RestFieldMapping.SetRange("EOS Field No.", Rec."EOS Field No.");
+        RestFieldMapping.SetFilter(SystemId, '<>%1', Rec.SystemId);
         RestFieldMapping.ReadIsolation := IsolationLevel::ReadUncommitted;
         if RestFieldMapping.IsEmpty() then
             exit;
