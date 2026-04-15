@@ -7,12 +7,15 @@ codeunit 70000 "EOS Restore Environment Mgt"
     end;
 
     #region TokenFunctions
-    procedure GetToken(): SecretText
+
+    [NonDebuggable]
+    internal procedure GetToken(): SecretText
     begin
         exit(GetToken(false));
     end;
 
-    procedure GetToken(ForceNew: Boolean): SecretText
+    [NonDebuggable]
+    internal procedure GetToken(ForceNew: Boolean): SecretText
     var
         AzureADTenant: Codeunit "Azure AD Tenant";
         Content: HttpContent;
@@ -81,7 +84,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         exit(IsTokenExpired(RestEnv."EOS Token Authorization Time", RestEnv."EOS Token Expires In"));
     end;
 
-    procedure IsTokenExpired(TokenAuthTime: DateTime; TokenExpiresIn: Integer): Boolean
+    internal procedure IsTokenExpired(TokenAuthTime: DateTime; TokenExpiresIn: Integer): Boolean
     var
         ElapsedSecs: Integer;
     begin
@@ -170,7 +173,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
     end;
     #endregion HttpHelpers
 
-    procedure RestoreEnvironment()
+    internal procedure RestoreEnvironment()
     var
         Counter: Integer;
         Status: Enum "EOS Environment Status";
@@ -256,7 +259,8 @@ codeunit 70000 "EOS Restore Environment Mgt"
         InsertLogRecord(Response);
     end;
 
-    procedure GetEnvironmentInfo() Status: Enum "EOS Environment Status"
+    [NonDebuggable]
+    internal procedure GetEnvironmentInfo() Status: Enum "EOS Environment Status"
     var
         Content: HttpContent;
         Response: HttpResponseMessage;
@@ -314,7 +318,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         OutStr.WriteText(JsonBody);
     end;
 
-    procedure GetOperationDetails(RequestType: Text; OperationId: Text; RaiseError: Boolean) Response: HttpResponseMessage;
+    internal procedure GetOperationDetails(RequestType: Text; OperationId: Text; RaiseError: Boolean) Response: HttpResponseMessage;
     var
         Content: HttpContent;
         ContentTypes: List of [Text];
@@ -329,7 +333,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         end;
     end;
 
-    procedure UpdateLogRecords()
+    internal procedure UpdateLogRecords()
     var
         RestRequestsLog, RestRequestsLog2 : Record "EOS Restore Requests Log";
         Response: HttpResponseMessage;
@@ -345,7 +349,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
             until RestRequestsLog.Next() = 0;
     end;
 
-    procedure UpdateLogStatus(RestRequestsLog: Record "EOS Restore Requests Log"; NewStatus: Enum "EOS Operation Status"; MessageText: Text[2048])
+    internal procedure UpdateLogStatus(RestRequestsLog: Record "EOS Restore Requests Log"; NewStatus: Enum "EOS Operation Status"; MessageText: Text[2048])
     begin
         RestRequestsLog."EOS Operation Status" := NewStatus;
         RestRequestsLog."EOS Operation Details" := MessageText;
@@ -434,7 +438,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         RestEnv.TestField("EOS New Environment Name");
     end;
 
-    procedure ExecuteFunctionsUI()
+    internal procedure ExecuteFunctionsUI()
     var
         Selection: Integer;
         Status: Enum "EOS Environment Status";
@@ -514,7 +518,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         SetRunOnce(false);
     end;
 
-    procedure ShowJobQueueEntry()
+    internal procedure ShowJobQueueEntry()
     var
         JQueueEntry: Record "Job Queue Entry";
         JobQueueEntryCard: Page "Job Queue Entry Card";
@@ -581,7 +585,7 @@ codeunit 70000 "EOS Restore Environment Mgt"
         until Company.Next() = 0;
     end;
 
-    procedure DeleteRestoreJobQueue()
+    internal procedure DeleteRestoreJobQueue()
     var
         Company: Record Company;
         JQueueEntry: Record "Job Queue Entry";
@@ -608,12 +612,12 @@ codeunit 70000 "EOS Restore Environment Mgt"
                 Message(Text001Lbl);
     end;
 
-    procedure SetRunOnce(RunOnce: Boolean)
+    internal procedure SetRunOnce(RunOnce: Boolean)
     begin
         IsRunOnce := RunOnce;
     end;
 
-    procedure CheckEnvironment()
+    internal procedure CheckEnvironment()
     var
         EnvironmentInfo: Codeunit "Environment Information";
         Text000Err: Label 'Cannot execute this funcionality in a non-production environment.';
@@ -626,5 +630,4 @@ codeunit 70000 "EOS Restore Environment Mgt"
     var
         RestEnv: Record "EOS Restore Environment";
         IsRunOnce: Boolean;
-
 }
